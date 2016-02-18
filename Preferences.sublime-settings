@@ -1,0 +1,20 @@
+{
+	"color_scheme": "Packages/Theme - Afterglow/Afterglow-markdown.tmTheme",
+	"ensure_newline_at_eof_on_save": false,
+	"font_size": 12,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"tab_size": 2,
+	"tabs_medium": true,
+	"tabs_padding_small": true,
+	"theme": "Afterglow.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"file_exclude_patterns":
+	[
+		"*.hi",
+		"*.jsmod",
+		"*.o"
+	]
+}
