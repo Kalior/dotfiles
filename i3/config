@@ -181,7 +181,7 @@ bar {
         # Conky
         #status_command ~/.config/conky/conkystart
         position bottom
-    	font xft:Inconsolata, Awesome 20
+    	font xft:Inconsolata, Awesome 10
         separator_symbol " "
         tray_output none
 
