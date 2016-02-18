@@ -1,0 +1,119 @@
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 5
+        color_good = "#999999"
+        color_bad = "#999999"
+        color_degraded = "#999999"
+}
+
+order += "imap def"
+order += "imap chit"
+order += "hubbitstatus"
+order += "wifistatus"
+order += "wireless wlp58s0"
+order += "ethernet eno1"
+order += "volume icon"
+order += "volume master"
+#order += "screenshot"
+order += "chargestatus"
+order += "battery 0"
+order += "tztime local"
+
+
+wifistatus {
+        cache_timeout = 5
+        interface = wlp58s0
+        color_bad="#C6572F"
+        color_degraded="#C6572F"
+        color_good="#24708A"
+}
+
+imap def {
+	cache_timeout = 60
+	imap_server = 'imap.gmail.com'
+	mailbox = 'INBOX'
+	port = '993'
+	user = 'kalioragus@gmail.com'
+	password = 'ChangeYourPassword2Times'
+	hide_if_zero = true
+	format = 'My  {unseen}'
+	new_mail_color = '#24708A'
+	criterion = 'UNSEEN'
+}
+
+imap chit {
+	cache_timeout = 60
+	imap_server = 'imap.gmail.com'
+	mailbox = 'INBOX'
+	port = '993'
+	user = 'kalior@chalmers.it'
+	password = '6Thh1ThVElSA6Oy'
+	hide_if_zero = true
+	format = 'Chalmers  {unseen}'
+	new_mail_color = '#24708A'
+	criterion = 'UNSEEN'
+}
+
+chargestatus {
+        cache_timeout = 5
+        notification = True
+        color_good="#24708A"
+        color_bad="#C6572F"
+        color_degraded="#C6572F"
+        color_charging="#24708A"
+}
+
+hubbitstatus {
+        cache_timeout = 60
+        cid="gujoel"
+        cookie="chalmersItAuth=34df98c621bd1a54b8e7675bc69a6ecb83579542"
+        color_good="#C6572F"
+        color_bad="#FF0000"
+}
+
+wireless wlp58s0 {
+        format_up = "%essid "
+        format_down = "down"
+        color_good = "#999999"
+        color_bad = "#E0E0E0"
+}
+
+ethernet eno1 {
+        # if you use %speed, i3status requires the cap_net_admin capability
+        format_up = "E: %ip (%speed)"
+        format_down = ""
+}
+
+tztime local {
+        format = " %Y-%m-%d   %H:%M:%S"
+}
+
+
+battery 0 {
+        format = "%percentage %remaining"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+        color_good = "#999999"
+        color_degraded = "#999999"
+        color_bad = "#999999"
+}
+
+volume icon {
+        format = ""
+        format_muted = " "
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+        color_degraded = "#C6572F"
+        color_good = "#52C62F"
+}
+volume master {
+        format = "%volume "
+        format_muted = "%volume "
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+        color_degraded = "#999999"
+        color_good = "#999999"
+}

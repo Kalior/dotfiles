@@ -1,0 +1,12 @@
+[user]
+	email = kalioragus@gmail.com
+	name = Kalior
+[push]
+	default = simple
+
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+
+[color]
+    ui = auto
