@@ -1,20 +1,36 @@
 {
-	"color_scheme": "Packages/Theme - Afterglow/Afterglow-markdown.tmTheme",
-	"ensure_newline_at_eof_on_save": false,
-	"font_size": 12,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
-	"tab_size": 2,
-	"tabs_medium": true,
-	"tabs_padding_small": true,
-	"theme": "Afterglow.sublime-theme",
-	"translate_tabs_to_spaces": true,
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-OceanicNext.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
 		"*.hi",
 		"*.jsmod",
 		"*.o"
-	]
+	],
+	"font_options":
+	[
+		"gray_antialias"
+	],
+	"font_size": 10,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"material_theme_accent_lime": true,
+	"material_theme_compact_sidebar": true,
+	"overlay_scroll_bars": "enabled",
+	"tab_size": 2,
+	"tabs_medium": true,
+	"tabs_padding_small": true,
+	"theme": "Material-Theme.sublime-theme",
+	"translate_tabs_to_spaces": true
 }
