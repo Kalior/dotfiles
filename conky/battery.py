@@ -5,15 +5,20 @@ from time import time
 
 import math
 import subprocess
+import json
 
 BLOCKS = ["", "", "", "", "", "", "", "", ""]
 CHARGING_CHARACTER = ""
 EMPTY_BLOCK_CHARGING = '|'
 EMPTY_BLOCK_DISCHARGING = '⍀'
 FULL_BLOCK = ''
-
+color_good="#24708A"
+color_bad="#C6572F"
+color_degraded="#C6572F"
+color_charging="#24708A"
 
 def battery_text():
+  response = {}
   #  Example acpi raw output:  "Battery 0: Discharging, 43%, 00:59:20 remaining"
   acpi_raw = subprocess.check_output(["acpi"], stderr=subprocess.STDOUT)
   acpi_unicode = acpi_raw.decode("UTF-8")
@@ -39,9 +44,20 @@ def battery_text():
     subprocess.call(['twmnc',
                       '-t', 'Warning Low Battery', '-c', str(percent_charged) + '%',
                       '--bg',"#C02510",
+                      '-d', '3000',
                       '-i', '~/.config/twmn/crit.png'],
                     stdout=open('/dev/null', 'w'),
                     stderr=open('/dev/null', 'w'))
-  return full_text
+
+  if percent_charged < 10:
+    color = color_bad
+  if percent_charged < 30:
+    color = color_degraded
+  else:
+    color = color_good
+
+  response["full_text"] = full_text
+  response["color"] = color
+  return json.dumps({"full_text":full_text, "color":color})
 
 print(battery_text())

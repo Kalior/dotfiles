@@ -11,7 +11,7 @@ def battery_color():
   color_good="#24708A"
   color_bad="#C6572F"
   color_degraded="#C6572F"
-  color_charging="#24708A"
+  color_charging="#52C62F"
   #  Example acpi raw output:  "Battery 0: Discharging, 43%, 00:59:20 remaining"
   acpi_raw = subprocess.check_output(["acpi"], stderr=subprocess.STDOUT)
   acpi_unicode = acpi_raw.decode("UTF-8")
@@ -26,9 +26,11 @@ def battery_color():
 
   battery_full = False
 
-  if percent_charged < 10:
+  if charging:
+    full_text = color_charging
+  elif percent_charged < 10:
     full_text = color_bad
-  if percent_charged < 30:
+  elif percent_charged < 30:
     full_text = color_degraded
   else:
       full_text = color_good
