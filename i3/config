@@ -177,9 +177,9 @@ bar {
         # Xmobar
         #status_command i3status | xmobar -o -t "%StdinReader%" -c "[Run StdinReader]"
     	# Py3status
-        status_command py3status -i ~/.config/i3status/py3status
+        #status_command py3status -i ~/.config/i3status/py3status
         # Conky
-        #status_command ~/.config/conky/conkystart
+        status_command ~/.config/conky/conkystart
         position bottom
     	font xft:Inconsolata, Awesome 10
         separator_symbol " "
@@ -220,7 +220,7 @@ bindsym $mod+o scratchpad show
 bindsym $mod+shift+o move scratchpad
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause 
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && killall -USR1 i3status
@@ -234,8 +234,10 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 
 # lock
 bindsym $mod+shift+l exec --no-startup-id sh ~/.fancylock.sh
-bindsym $mod+shift+p exec --no-startup-id sh ~/.fancylock.sh && sync && sudo pm-suspend
+#bindsym $mod+shift+p exec --no-startup-id sh ~/.fancylock.sh && sync && sudo pm-suspend
 
+# pastebin
+bindsym $mod+shift+p exec --no-startup-id ~/.PastebinPaste.py -d 08aa025696c7414f335e27f847b95ae3
 
 # more float
 for_window [window_role="pop-up"] floating enable
