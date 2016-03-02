@@ -37,7 +37,7 @@ TEXT
 # JSON for i3bar
 [
    # Wifi
-   {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6},
+   {"full_text":"${exec ~/.config/conky/wifiicon.py} ","color":"${exec ~/.config/conky/wificolor.py}","separator":false,"separator_block_width":6},
    {"full_text":"${wireless_essid wlp58s0}","color":"\#808080"},
    # Sound
    {"full_text":"${exec ~/.config/conky/soundicon.py}","color":"${exec ~/.config/conky/soundcolor.py}","separator":false,"separator_block_width":6},
