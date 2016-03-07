@@ -12,22 +12,22 @@ class Py3status:
 	color_bad="#FF0000"
 
 	def check_hubbit(self, i3s_output_list, i3s_config):
-		try: 
+		try:
 			opener = urllib.request.build_opener()
 			opener.addheaders.append(('Cookie', self.cookie))
-			
+
 			hubbit_url = 'http://hubbit.chalmers.it/stats/%s.json' % self.cid
 			response = opener.open(hubbit_url).read()
 			jsonResponse = json.loads(response.decode('utf-8'))
-			
+
 			date = datetime.datetime.strptime(jsonResponse['last_session'][0:-10], '%Y-%m-%dT%H:%M:%S')
-				
+
 			last_session_duration = jsonResponse['last_session_duration']
-	
+
 			response = {
 				'	cache_timeout':	time() + self.cache_timeout,
 					'full_text':	"Hubben %dmin" % (last_session_duration/60) + " " if date > datetime.datetime.now() else "",
-					'color':		self.color_good 
+					'color':		self.color_good
 				}
 		except:
 			response = {
@@ -35,7 +35,7 @@ class Py3status:
 					'full_text':		""
 				}
 
-	
+
 		return response
 
 
