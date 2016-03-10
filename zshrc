@@ -109,7 +109,7 @@ fi
 
 alias irkk="ssh -t cantina irkk"
 alias path="echo $PATH | tr ':' '\n'"
-alias synstart="synergyc --name vatten 192.168.30.100"
+alias synstart="synergyc --name vatten 192.168.30.105"
 
 # Networkmanager aliases
 alias netcon="nmcli con up id"
