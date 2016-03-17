@@ -5,7 +5,7 @@ background no
 max_text_width 0
 
 # Update interval in seconds
-update_interval 1.0
+update_interval 2.0
 
 # This is the number of times Conky will update before quitting.
 # Set to zero to run forever.
@@ -36,6 +36,9 @@ TEXT
 
 # JSON for i3bar
 [
+   # Personal mail
+   {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6},
+   {"full_text":"${exec ~/.config/conky/mailtext.py}","color":"\#808080"},
    # Wifi
    {"full_text":"${exec ~/.config/conky/wifiicon.py} ","color":"${exec ~/.config/conky/wificolor.py}","separator":false,"separator_block_width":6},
    {"full_text":"${wireless_essid wlp58s0}","color":"\#808080"},
