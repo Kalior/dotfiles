@@ -1,0 +1,31 @@
+# Lower backlight
+"xbacklight -dec 10"
+  XF86MonBrightnessDown
+
+# Inc backlight
+"xbacklight -inc 10"
+  XF86MonBrightnessUp
+
+# Raise volume
+"amixer set Master 2%+"
+  XF86AudioRaiseVolume
+
+# Lower volume
+"amixer set Master 2%-"
+  XF86AudioLowerVolume
+
+# Mute sound
+"amixer set Master toggle"
+  XF86AudioMute
+
+# Play/pause
+"playerctl play-pause"
+  XF86AudioPlay
+
+# Next song
+"playerctl next"
+  XF86AudioNext
+
+# Previous song
+"playerctl previous"
+  XF86AudioPrev
