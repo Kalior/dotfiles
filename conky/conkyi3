@@ -41,7 +41,7 @@ TEXT
    {"full_text":"${wireless_essid wlp58s0}","color":"\#808080"},
    # Sound
    {"full_text":"${exec ~/.config/conky/soundicon.py}","color":"${exec ~/.config/conky/soundcolor.py}","separator":false,"separator_block_width":6},
-   {"full_text":"${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f6 | cut -b 2-4}","color":"\#808080"},
+   {"full_text":"${exec amixer get Master | grep "Front Left:" | cut -d " " -f7 | cut -b 2-4}","color":"\#808080"},
    # Battery
    {"full_text":"${exec ~/.config/conky/batteryicon.py} ","color":"${exec ~/.config/conky/batterycolor.py}","separator":true,"separator_block_width":6},
    {"full_text":"${exec python ~/.config/conky/batterytext.py}","color":"\#808080"},
