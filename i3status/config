@@ -34,8 +34,8 @@ imap def {
 	imap_server = 'imap.gmail.com'
 	mailbox = 'INBOX'
 	port = '993'
-	user = 'kalioragus@gmail.com'
-	password = 'ChangeYourPassword2Times'
+	user = ''
+	password = ''
 	hide_if_zero = true
 	format = 'My  {unseen}'
 	new_mail_color = '#24708A'
@@ -47,8 +47,8 @@ imap chit {
 	imap_server = 'imap.gmail.com'
 	mailbox = 'INBOX'
 	port = '993'
-	user = 'kalior@chalmers.it'
-	password = '6Thh1ThVElSA6Oy'
+	user = ''
+	password = ''
 	hide_if_zero = true
 	format = 'Chalmers  {unseen}'
 	new_mail_color = '#24708A'
@@ -67,7 +67,7 @@ chargestatus {
 hubbitstatus {
         cache_timeout = 60
         cid="gujoel"
-        cookie="chalmersItAuth=34df98c621bd1a54b8e7675bc69a6ecb83579542"
+        cookie="chalmersItAuth="
         color_good="#C6572F"
         color_bad="#FF0000"
 }
