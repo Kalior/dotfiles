@@ -1,19 +1,23 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-OceanicNext.tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Material-Theme-OceanicNext (SL).tmTheme",
+	"dictionary": "Packages/Language - English/en_GB.dic",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
 		"*.hi",
 		"*.jsmod",
-		"*.o"
+		"*.o",
+		"*.class",
+		"*.jar"
 	],
+	"font_face": "Inconsolata",
 	"font_options":
 	[
 		"gray_antialias"
 	],
-	"font_size": 10,
+	"font_size": 12,
 	"ignored_packages":
 	[
 		"Vintage"
