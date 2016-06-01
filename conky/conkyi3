@@ -36,9 +36,16 @@ TEXT
 
 # JSON for i3bar
 [
+   # Toogl running timer
+   {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6, "name": "toggl"},
+   {"full_text":"${exec cat ~/.config/conky/toggl_running}","color":"\#808080", "separator_block_width":16, "name": "toggl_descr"},
+   {"full_text":"${exec cat ~/.config/conky/toggl_project}","color":"\#808080", "name": "toggl_project"},
+   # Chalmers mail
+   {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6},
+   {"full_text":"${exec cat ~/.config/conky/chalmersmail}","color":"\#808080"},
    # Personal mail
-   {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6},
-   {"full_text":"${exec ~/.config/conky/mailtext.py}","color":"\#808080"},
+   {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6},
+   {"full_text":"${exec cat ~/.config/conky/mail}","color":"\#808080"},
    # Wifi
    {"full_text":"${exec ~/.config/conky/wifiicon.py} ","color":"${exec ~/.config/conky/wificolor.py}","separator":false,"separator_block_width":6},
    {"full_text":"${wireless_essid wlp58s0}","color":"\#808080"},
