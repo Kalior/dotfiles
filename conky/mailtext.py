@@ -19,9 +19,11 @@ Format of status string placeholders:
 
 Stolen from py3status
 """
-
+import sys
 import imaplib
-from time import time
+import time
+import subprocess
+import math
 
 # available configuration parameters
 cache_timeout = 60
@@ -30,12 +32,14 @@ hide_if_zero = False
 imap_server = 'imap.gmail.com'
 mailbox = 'INBOX'
 format = '{unseen}'
-password = "password"
+#password = "fcmuhkrtibcgjqdq"
 port = '993'
-user = "email"
+#user = "kalioragus@gmail.com"
 
 def check_mail():
-    mail_count = _get_mail_count()
+    user = sys.argv[1]
+    password = sys.argv[2]
+    mail_count = _get_mail_count(user, password)
 
     if mail_count == 'N/A':
         full_text = mail_count
@@ -49,8 +53,8 @@ def check_mail():
 
     return full_text
 
-def _get_mail_count():
-   try:
+def _get_mail_count(user, password):
+    try:
         mail_count = 0
         directories = mailbox.split(',')
         connection = imaplib.IMAP4_SSL(imap_server, port)
@@ -64,13 +68,15 @@ def _get_mail_count():
 
         connection.close()
         return mail_count
-
     except:
-       return 'N/A'
+        return 'N/A'
 
 
 if __name__ == "__main__":
     """
     Test this module by calling it directly.
     """
-    print(check_mail())
+    filename = sys.argv[3]
+    mail_count = check_mail()
+    with open(filename, 'w') as f:
+        f.write(mail_count)
