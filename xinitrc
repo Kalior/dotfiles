@@ -30,7 +30,7 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# xprofile 
+# xprofile
 [ -f ~/.xprofile ] && source ~/.xprofile
 
 # start some nice programs
@@ -47,22 +47,22 @@ fi
 #xterm -geometry 80x50+494+51 &
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
-xrdb -merge ~/.Xdefaults
+xrdb -merge ~/.Xdefaults &
+xbindkeys &
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-modprobe vboxdrv
+modprobe vboxdrv &
 
-xrandr --output eDP1 --primary
+xrandr --output eDP1 --primary &
 xset r rate 300 45 &
 sh ~/.wallpaper.sh &
 twmnd &
-xsetroot -cursor_name left_ptr & 
-
+xsetroot -cursor_name left_ptr &
 # xmonad grejer
-#trayer & 
+#trayer &
 #exec xmonad
 
-#i3 
+#i3
 exec i3
