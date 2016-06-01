@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font xft:Inconsolata
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -90,49 +90,49 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace 1:
+bindsym $mod+2 workspace 2:
+bindsym $mod+3 workspace 3:
+bindsym $mod+4 workspace 4:
+bindsym $mod+5 workspace 5:
+bindsym $mod+6 workspace 6:
+bindsym $mod+7 workspace 7:
+bindsym $mod+8 workspace 8:
+bindsym $mod+9 workspace 9:
+bindsym $mod+0 workspace 10:
 # Extra buttons for uncreachable spaces
-bindsym $mod+control+1 workspace 6
-bindsym $mod+control+2 workspace 7
-bindsym $mod+control+3 workspace 8
-bindsym $mod+control+4 workspace 9
-bindsym $mod+control+5 workspace 10
+bindsym $mod+control+1 workspace 6:
+bindsym $mod+control+2 workspace 7:
+bindsym $mod+control+3 workspace 8:
+bindsym $mod+control+4 workspace 9:
+bindsym $mod+control+5 workspace 0:
 bindsym $mod+control+w workspace 
 bindsym $mod+control+l workspace 
-bindsym $mod+control+c workspace 
+bindsym $mod+control+c workspace 2:
 bindsym $mod+control+s workspace 
-
+bindsym $mod+control+t workspace 3:
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace 1:
+bindsym $mod+Shift+2 move container to workspace 2:
+bindsym $mod+Shift+3 move container to workspace 3:
+bindsym $mod+Shift+4 move container to workspace 4:
+bindsym $mod+Shift+5 move container to workspace 5:
+bindsym $mod+Shift+6 move container to workspace 6:
+bindsym $mod+Shift+7 move container to workspace 7:
+bindsym $mod+Shift+8 move container to workspace 8:
+bindsym $mod+Shift+9 move container to workspace 9:
+bindsym $mod+Shift+0 move container to workspace 10:
 # Extra buttons for uncreachable spaces
-bindsym $mod+control+shift+1 move container to workspace 6
-bindsym $mod+control+shift+2 move container to workspace 7
-bindsym $mod+control+shift+3 move container to workspace 8
-bindsym $mod+control+shift+4 move container to workspace 9
-bindsym $mod+control+shift+5 move container to workspace 10
+bindsym $mod+control+shift+1 move container to workspace 6:
+bindsym $mod+control+shift+2 move container to workspace 7:
+bindsym $mod+control+shift+3 move container to workspace 8:
+bindsym $mod+control+shift+4 move container to workspace 9:
+bindsym $mod+control+shift+5 move container to workspace 10:
 bindsym $mod+control+Shift+w move container to workspace 
 bindsym $mod+control+Shift+l move container to workspace 
-bindsym $mod+control+Shift+c move container to workspace 
+bindsym $mod+control+Shift+c move container to workspace 2:
 bindsym $mod+control+Shift+s move container to workspace 
-
+bindsym $mod+control+Shift+t move container to workspace 3:
 
 # Put shi window on the presentation output.
 bindsym $mod+x move workspace to output right
@@ -184,18 +184,19 @@ bar {
     	font xft:Inconsolata, Awesome 10
         separator_symbol " "
         tray_output none
+        strip_workspace_numbers yes
 
         # Changed some colors
         colors {
-        background #161616
+        background #121212
         statusline #E0E0E0
         separator #444444
-
-        focused_workspace  #161616 #5A2314 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #444444 #161616 #AAAAAA
-        urgent_workspace   #2f343a #C0C0C0 #5f676a
-        binding_mode       #2f343a #900000 #ffffff
+        # <colorclass>     <border> <background> <text>
+        focused_workspace  #121212 #121212 #AFFFDF
+        active_workspace   #121212 #121212 #121212
+        inactive_workspace #121212 #121212 #999999
+        urgent_workspace   #121212 #121212 #af643a
+        binding_mode       #121212 #900000 #ffffff
     }
 }
 
@@ -235,13 +236,18 @@ bindsym XF86AudioPrev exec playerctl previous
 
 
 # lock
-bindsym $mod+shift+l exec --no-startup-id sh ~/.fancylock.sh
+bindsym $mod+shift+l exec ~/.fancylock.sh
 #bindsym $mod+shift+p exec --no-startup-id sh ~/.fancylock.sh && sync && sudo pm-suspend
 
 # pastebin
 bindsym $mod+shift+p exec --no-startup-id ~/.PastebinPaste.py -d 08aa025696c7414f335e27f847b95ae3
 
+# to kbfs
+bindsym --release Print exec scrot -e 'echo "https://keybase.pub/kalior/photos/$f" | xclip -sel clip && mv $f /keybase/public/kalior/photos/' -s
+
+
 # more float
+for_window [title="Toggl Conky pop-up"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
@@ -257,4 +263,4 @@ hide_edge_borders both
 
 # colors
 # class                 border  backgr. text    indicator
-client.focused          #161616 #143E4D #ffffff #4D2314
+client.focused          #121212 #143E4D #ffffff #4D2314
