@@ -16,7 +16,7 @@ def battery_text():
   #  Example list: ['Battery', '0:', 'Discharging', '43%', '00:59:20', 'remaining']
   acpi_list = acpi_unicode.split(' ')
 
-  charging = True if acpi_list[2][:8] == "Charging" else False
+  charging = acpi_list[2][:8] == "Charging"
   percent_charged = int(acpi_list[3][:-2])
 
   time_remaining = ' ' + acpi_list[4] if len(acpi_list) > 4 else ""

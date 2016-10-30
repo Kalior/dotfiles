@@ -111,6 +111,7 @@ bindsym $mod+control+l workspace 
 bindsym $mod+control+c workspace 2:
 bindsym $mod+control+s workspace 
 bindsym $mod+control+t workspace 3:
+bindsym $mod+control+a workspace 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1:
 bindsym $mod+Shift+2 move container to workspace 2:
@@ -133,7 +134,7 @@ bindsym $mod+control+Shift+l move container to workspace 
 bindsym $mod+control+Shift+c move container to workspace 2:
 bindsym $mod+control+Shift+s move container to workspace 
 bindsym $mod+control+Shift+t move container to workspace 3:
-
+bindsym $mod+control+Shift+a move container to workspace 
 # Put shi window on the presentation output.
 bindsym $mod+x move workspace to output right
 
@@ -243,7 +244,7 @@ bindsym $mod+shift+l exec ~/.fancylock.sh
 bindsym $mod+shift+p exec --no-startup-id ~/.PastebinPaste.py -d 08aa025696c7414f335e27f847b95ae3
 
 # to kbfs
-bindsym --release Print exec scrot -e 'echo "https://keybase.pub/kalior/photos/$f" | xclip -sel clip && mv $f /keybase/public/kalior/photos/' -s
+bindsym --release Print exec scrot -e 'echo "https://kalior.keybase.pub/photos/$f" | xclip -sel clip && mv $f /keybase/public/kalior/photos/' -s
 
 
 # more float

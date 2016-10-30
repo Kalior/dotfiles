@@ -65,6 +65,8 @@ PATH=$PATH:~/.cabal/bin
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
+export ANDROID_HOME=/opt/android-sdk
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

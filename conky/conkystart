@@ -17,20 +17,26 @@ while read;do
   IFS=" "
   STR=`echo $REPLY | sed -e s/[{}]//g -e "s/ \"/\"/g" | awk '{n=split($0,a,","); for (i=1; i<=n; i++) {m=split(a[i],b,":"); if (b[1] == "\"name\"") {NAME=b[2]} if (b[1] =="\"x\"") {X=b[2]} if (b[1] =="\"y\"") {Y=b[2]} } print NAME " " X " " Y}'`
   read NAME X Y <<< $STR
-  X=$(($X-50))
+  X=$(($X-200))
   Y=$(($Y-82))
   case "${NAME}" in
     \"toggl\")
-      python ~/.config/conky/toggl_toggl.py
-      python ~/.config/conky/togglconky.py
+      python ~/projects/conky-toggl-button/toggl_toggl.py
+      python ~/projects/conky-toggl-button/togglconky.py
       ;;
     \"toggl_descr\")
-      python ~/.config/conky/toggl_change_name.py $X 1700
-      python ~/.config/conky/togglconky.py
+      python ~/projects/conky-toggl-button/toggl_change_name.py $X 1700
+      python ~/projects/conky-toggl-button/togglconky.py
       ;;
     \"toggl_project\")
-      python ~/.config/conky/qtpython.py $X 1700
-      python ~/.config/conky/togglconky.py
+      python ~/projects/conky-toggl-button/toggl_change_project.py $X 1320
+      python ~/projects/conky-toggl-button/togglconky.py
+      ;;
+    \"mail\")
+      chromium https://inbox.google.com/u/0/ > /dev/null
+      ;;
+    \"chalmersmail\")
+      chromium https://inbox.google.com/u/1/ > /dev/null
       ;;
     *)
       ;;
