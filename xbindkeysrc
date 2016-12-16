@@ -7,15 +7,15 @@
   XF86MonBrightnessUp
 
 # Raise volume
-"amixer set Master 2%+"
+"pactl set-sink-volume @DEFAULT_SINK@ +2%"
   XF86AudioRaiseVolume
 
 # Lower volume
-"amixer set Master 2%-"
+"pactl set-sink-volume @DEFAULT_SINK@ -2%"
   XF86AudioLowerVolume
 
 # Mute sound
-"amixer set Master toggle"
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
   XF86AudioMute
 
 # Play/pause

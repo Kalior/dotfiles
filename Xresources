@@ -48,7 +48,7 @@ Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
 URxvt.allow_bold:           false
-URxvt.font: xft:Inconsolata\ for\ Powerline:size=10
+URxvt.font: xft:Inconsolata for Powerline:size=10
 URxvt.boldFont: xft:Inconsolata:bold:size=10
 
 ! special
