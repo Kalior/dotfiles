@@ -4,17 +4,29 @@ export ZSH=/home/kalior/.oh-my-zsh
 # Background is this neccesary? and also should this be done ine .xinitrc?
 # sh .fehbg
 
+# Functions to be able to write time in terminal
+function preexec() {
+  timer=${timer:-$(($(date +%s%N)/1000000))}
+}
+
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($(($(date +%s%N)/1000000)) - $timer))
+    export TIMEPROMPT="%F{cyan}${timer_show}ms %{$reset_color%}"
+    unset timer
+  fi
+}
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="kalior"
+ZSH_THEME="kaliorparty"
 
 # Autocomplete .. to ../
 zstyle ':completion:*' special-dirs true
 
-# 
+#
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Uncomment the following line to use case-sensitive completion.
@@ -106,24 +118,24 @@ fi
 
 # init ruby stuff
 # eval "$(rbenv init -)"
-# export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
-# export PATH=$GEM_HOME/bin:$PATH
+export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+export PATH=$GEM_HOME/bin:$PATH
 
 alias irkk="ssh -t cantina irkk"
 alias path="echo $PATH | tr ':' '\n'"
-alias synstart="synergyc --name vatten 192.168.30.105"
-
+alias synstart="synergyc --name vatten 192.168.30.104"
+alias home="~/.screenlayout/home.sh"
 # Networkmanager aliases
 alias netcon="nmcli con up id"
 alias netlist="nmcli dev wifi list"
+alias lunch="curl https://chalmers.it/lunch/feed | less"
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 eval "$(rbenv init -)"
-
+eval "$(fasd --init auto)"
 
 # Path additions
 #export PATH=$PATH:~/.cabal/bin
-
 # Archey3
 archey3
