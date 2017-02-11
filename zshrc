@@ -12,7 +12,7 @@ function preexec() {
 function precmd() {
   if [ $timer ]; then
     timer_show=$(($(($(date +%s%N)/1000000)) - $timer))
-    export TIMEPROMPT="%F{cyan}${timer_show}ms %{$reset_color%}"
+    export TIMEPROMPT="%F{cyan}${timer_show}ms %F{white}%{$reset_color%}"
     unset timer
   fi
 }

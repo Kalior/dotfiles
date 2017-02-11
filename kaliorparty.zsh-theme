@@ -1,4 +1,4 @@
-PROMPT='%(?,%{$fg[green]%},%{$fg[red]%}) %% '
+PROMPT='%(?,%{$fg[blue]%},%{$fg[red]%}) %% '
 # RPS1='%{$fg[blue]%}%~%{$reset_color%} '
 RPS1='%{$fg[blue]%}%2~$(git_prompt_info) ${TIMEPROMPT} %{$reset_color%}'
 

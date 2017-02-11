@@ -39,7 +39,7 @@ TEXT
    # Toogl running timer
    {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6, "name": "toggl"},
    {"full_text":"${exec cat ~/projects/conky-toggl-button/toggl_running}","color":"\#808080", "separator_block_width":16, "name": "toggl_descr"},
-   {"full_text":"${exec cat ~/projects/conky-toggle-button/toggl_project}","color":"\#808080", "name": "toggl_project"},
+   {"full_text":"${exec cat ~/projects/conky-toggl-button/toggl_project}","color":"\#808080", "name": "toggl_project"},
    # Chalmers mail
    {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6, "name": "chalmersmail"},
    {"full_text":"${exec cat ~/.config/conky/chalmersmail}","color":"\#808080", "name": "chalmersmail"},
