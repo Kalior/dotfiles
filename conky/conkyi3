@@ -60,5 +60,6 @@ TEXT
    {"full_text":"${time %a %b %d}","color":"\#808080","separator":false},
    # Clock
    {"full_text":" ","color":"\#24708A","separator":false,"separator_block_width":6},
-   {"full_text":"${time %H:%M:%S}","color":"\#808080","separator":false}
+   {"full_text":"${exec python ~/.config/conky/randomtime.py}","color":"\#808080","separator":false, "separator_block_width":0},
+   {"full_text":"${time %S}","color":"\#808080","separator":false}
 ],

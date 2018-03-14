@@ -3,6 +3,7 @@
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Tomorrow.tmTheme",
 	"dictionary": "Packages/Language - English/en_GB.dic",
+	"dpi_scale": 2.0,
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
@@ -18,14 +19,15 @@
 		"*.fls",
 		"*.pdf"
 	],
-	"font_face": "Inconsolata-g",
+	"font_face": "Input",
 	"font_options":
 	[
 		"gray_antialias"
 	],
-	"font_size": 10,
+	"font_size": 13,
 	"ignored_packages":
 	[
+		"SublimeLinter-annotations",
 		"Vintage"
 	],
 	"indent_guide_options":

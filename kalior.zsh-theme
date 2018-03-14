@@ -202,12 +202,10 @@ build_RPS1() {
 }
 
 build_prompt() {
-
   prompt_segment black yellow "%%"
   prompt_end
-
 }
 
 PROMPT='%{%f%b%k%}$(build_RPS1)
 $(build_prompt)'
-## RPS1='%{%f%b%k%}$(build_RPS1)'
+##RPS1='%{%f%b%k%}$(build_RPS1)'

@@ -29,7 +29,7 @@ while read;do
       python ~/projects/conky-toggl-button/togglconky.py
       ;;
     \"toggl_project\")
-      python ~/projects/conky-toggl-button/toggl_change_project.py $X 1320
+      python ~/projects/conky-toggl-button/toggl_change_project.py $X $Y
       python ~/projects/conky-toggl-button/togglconky.py
       ;;
     \"mail\")

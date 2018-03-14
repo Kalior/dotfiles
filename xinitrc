@@ -50,8 +50,8 @@ fi
 xrdb -merge ~/.Xdefaults &
 xbindkeys &
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) & 
+export SSH_AUTH_SOCK &
 
 modprobe vboxdrv &
 
@@ -60,6 +60,8 @@ xset r rate 300 45 &
 sh ~/.wallpaper.sh &
 twmnd &
 xsetroot -cursor_name left_ptr &
+libinput-gestures-setup start &
+srandrd screenconfig &
 # xmonad grejer
 #trayer &
 #exec xmonad

@@ -33,7 +33,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec ~/.rofi #dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -105,13 +105,14 @@ bindsym $mod+control+1 workspace 6:
 bindsym $mod+control+2 workspace 7:
 bindsym $mod+control+3 workspace 8:
 bindsym $mod+control+4 workspace 9:
-bindsym $mod+control+5 workspace 0:
-bindsym $mod+control+w workspace 
-bindsym $mod+control+l workspace 
+bindsym $mod+control+5 workspace 10:
+bindsym $mod+control+w workspace 11:
+bindsym $mod+control+l workspace 12:
 bindsym $mod+control+c workspace 2:
-bindsym $mod+control+s workspace 
+bindsym $mod+control+s workspace 13:
 bindsym $mod+control+t workspace 3:
-bindsym $mod+control+a workspace 
+bindsym $mod+control+a workspace 14:
+bindsym $mod+control+d workspace 15:
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1:
 bindsym $mod+Shift+2 move container to workspace 2:
@@ -129,12 +130,13 @@ bindsym $mod+control+shift+2 move container to workspace 7:
 bindsym $mod+control+shift+3 move container to workspace 8:
 bindsym $mod+control+shift+4 move container to workspace 9:
 bindsym $mod+control+shift+5 move container to workspace 10:
-bindsym $mod+control+Shift+w move container to workspace 
-bindsym $mod+control+Shift+l move container to workspace 
+bindsym $mod+control+Shift+w move container to workspace 11:
+bindsym $mod+control+Shift+l move container to workspace 12:
 bindsym $mod+control+Shift+c move container to workspace 2:
-bindsym $mod+control+Shift+s move container to workspace 
+bindsym $mod+control+Shift+s move container to workspace 13:
 bindsym $mod+control+Shift+t move container to workspace 3:
-bindsym $mod+control+Shift+a move container to workspace 
+bindsym $mod+control+Shift+a move container to workspace 14:
+bindsym $mod+control+Shift+d move container to workspace 15:
 # Put shi window on the presentation output.
 bindsym $mod+x move workspace to output right
 
@@ -174,32 +176,34 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        # Xmobar
-        #status_command i3status | xmobar -o -t "%StdinReader%" -c "[Run StdinReader]"
-    	# Py3status
-        #status_command py3status -i ~/.config/i3status/py3status
-        # Conky
-        status_command ~/.config/conky/conkystart
-        position bottom
-        font xft:Inconsolata, Awesome 11
-        separator_symbol " "
-        tray_output none
-        strip_workspace_numbers yes
-
-        # Changed some colors
-        colors {
-        background #121212
-        statusline #E0E0E0
-        separator #444444
-        # <colorclass>     <border> <background> <text>
-        focused_workspace  #121212 #121212 #AFFFDF
-        active_workspace   #121212 #121212 #121212
-        inactive_workspace #121212 #121212 #999999
-        urgent_workspace   #121212 #121212 #af643a
-        binding_mode       #121212 #900000 #ffffff
-    }
-}
+#bar {
+#        # Xmobar
+#        #status_command i3status | xmobar -o -t "%StdinReader%" -c "[Run StdinReader]"
+#    	# Py3status
+#        #status_command py3status -i ~/.config/i3status/py3status
+#        # Conky
+#        #status_command ~/.config/conky/conkystart
+#        position bottom
+#        font xft:Inconsolata, Awesome 11
+#        separator_symbol " "
+#        tray_output none
+#        strip_workspace_numbers yes
+#
+#        # Changed some colors
+#        colors {
+#        background #121212
+#        statusline #E0E0E0
+#        separator #444444
+#        # <colorclass>     <border> <background> <text>
+#        focused_workspace  #121212 #121212 #AFFFDF
+#        active_workspace   #121212 #121212 #121212
+#        inactive_workspace #121212 #121212 #999999
+#        urgent_workspace   #121212 #121212 #af643a
+#        binding_mode       #121212 #900000 #ffffff
+#    }
+#}
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Assign programs to specific workspaces
 # use xprop to see what to input as class
@@ -255,7 +259,7 @@ for_window [title="Preferences$"] floating enable
 
 
 # i3-gaps
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
 #gaps inner 10
 #gaps outer 0
 #smart_gaps on
@@ -263,5 +267,11 @@ for_window [class="^.*"] border pixel 3
 hide_edge_borders both
 
 # colors
-# class                 border  backgr. text    indicator
-client.focused          #121212 #143E4D #ffffff #4D2314
+# class                 border  backgr. text    indicator child_border
+client.focused          #333333 #222222 #dddddd #2e9ef4   #dddddd
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #dddddd
+client.unfocused        #333333 #222222 #555555 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
