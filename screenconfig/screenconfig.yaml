@@ -19,6 +19,12 @@ asus: &asus
   panning: 2880x1800+3200+0
   mode: 1920x1200
 
+dell: &dell
+  edid: [AC10F1004147574C]
+  resolution: auto
+  scale: 1.7x1.7
+  mode: 2560x1080
+
 # The default configuration that's applied if no other configuration matches.  A
 # different section can be selected by setting the environment variable
 # SCREENCONFIG_DEFAULT to the name of a different section.  This might be

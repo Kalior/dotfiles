@@ -1,39 +1,43 @@
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background-transparent = #00000000
+background = #1d1f21
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #f7f2ed
 foreground-alt = #999
 primary = #ffb52a
 secondary = #C6572F
 alert = #bd2c40
 underground = #24708A
+underground-transparent = #00000000
+green = #a3be8c
 
 [bar/i3bar]
 monitor = ${env:MONITOR}
 bottom = true
 width = 100%
-height = 42
-radius = 2.0
+height = 60
+radius = 0.0
 fixed-center = true
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-background = ${colors.background}
+background = ${colors.background-transparent}
 foreground = ${colors.foreground-alt}
 
 line-size = 3
 line-color = #f00
 
-border-size = 4
+border-size = 12
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 2
+module-radius = 0.0
+module-margin-left = 0
+module-margin-right = 0
 
 font-0 = FontAwesome:size=18;3
 font-1 = Input:size=18;3
@@ -45,7 +49,7 @@ tray-position = none
 
 modules-left = i3
 modules-center = spotify
-modules-right = toggl personal-mail volume wlan battery date random-time
+modules-right = personal-mail toggl volume wlan battery date random-time
 
 [module/i3]
 type = internal/i3
@@ -59,54 +63,67 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 3
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-underline = ${colors.underground}
+label-focused-padding = 3
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
-label-unfocused-padding = 2
+label-unfocused-underline = ${colors.underground-transparent}
+label-unfocused-background = ${colors.background}
+label-unfocused-padding = 3
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${colors.secondary}
-label-visible-padding = ${self.label-focused-padding}
+label-visible-background = ${colors.background}
+label-visible-underline = ${colors.green}
+label-visible-padding = 3
 
 ; urgent = Workspace with urgency hint set
 
 label-occupied = %index%
-label-occupied-padding = 2
+label-occupied-padding = 3
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 3
 
 label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+label-empty-padding = 3s
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
+format-full-padding = 3
+label-discharging-padding-right = 3
+label-charging-padding-right = 3
+animation-charging-padding-left = 3
+ramp-capacity-padding-left = 3
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <animation-charging><label-charging>
 format-charging-underline = ${colors.underground}
+format-charging-background = ${colors.background}
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <ramp-capacity><label-discharging>
+format-discharging-background = ${colors.background}
 format-discharging-underline = #ffb52a
+
+label-discharging-background = ${colors.background}
+label-charging-background = ${colors.background}
 
 label-full = %{}
 format-full-prefix = 
 format-full-prefix-foreground = ${colors.underground}
+format-full-background = ${colors.background}
 ;format-full-underline = ${colors.underground}
 
 ramp-capacity-0 = 
@@ -122,6 +139,8 @@ ramp-capacity-7 = 
 ramp-capacity-8 = 
 
 ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-background = ${colors.background}
+ramp-capacity-padding-right = 1
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -130,38 +149,48 @@ animation-charging-3 = 
 animation-charging-4 = 
 
 animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-background = ${colors.background}
 animation-charging-framerate = 750
+animation-charging-padding-right = 1
 
 
 [module/date]
 type = internal/date
 interval = 5
 
-date = " %Y %m %d"
+date = "%Y %m %d"
 
 time =
 
-format-prefix = 
-format-prefix-foreground = ${colors.underground}
+;format-prefix-padding-left = 3
+;format-prefix-padding-right = 1
+;format-prefix =
+;format-prefix-foreground = ${colors.underground}
 format-foreground = ${colors.foreground-alt}
+format-background = ${colors.background}
 ;format-underline = ${colors.underground}
 
 label = %date% %time%
+label-padding = 3
 
 [module/wlan]
 type = internal/network
 interface = wlp58s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal><label-connected>
 ;format-connected-underline = ${colors.underground}
 label-connected = %essid%
+label-connected-padding-right = 3
 label-connected-foreground = ${colors.foreground-alt}
+label-connected-background = ${colors.background}
 
 format-disconnected = <label-disconnected>
-format-disconnected-underline =
+;format-disconnected-underline =
+label-disconnected-padding = 3
 label-disconnected = 
-label-disconnected-foreground = ${colors.alert}
+label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-background = ${colors.background}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -169,16 +198,22 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.underground}
+ramp-signal-background = ${colors.background}
+ramp-signal-padding-left = 3
+ramp-signal-padding-right = 1
 
 [module/personal-mail]
 type = custom/script
 
-exec = /home/kalior/.config/polybar/mailtext.py email api_key
+exec = /home/kalior/.config/polybar/mailtext.py kalioragus@gmail.com fcmuhkrtibcgjqdq
 
 interval = 90
 
 format-foreground = ${colors.foreground-alt}
 format-underline = ${colors.underground}
+format-background = ${colors.background}
+format-margin = 3
+format-padding = 3
 
 click-left = chromium https://inbox.google.com/u/0/ > /dev/null
 
@@ -190,14 +225,17 @@ exec = /home/kalior/.config/polybar/randomTime.py
 interval = 30
 
 format-foreground = ${colors.foreground-alt}
+format-background = ${colors.background}
+format-padding = 3
+format-padding-right = 6
 ;format-underline = ${colors.underground}
 
-format-prefix = 
-format-prefix-padding-right = 1
-format-prefix-foreground = ${colors.underground}
+;format-prefix = 
+;format-prefix-padding-right = 0
+;format-prefix-foreground = ${colors.underground}
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 ; Soundcard to be used
 master-soundcard = default
@@ -210,9 +248,11 @@ master-mixer = Master
 ; Default: false
 mapping = true
 
-format-volume = <ramp-volume> <label-volume>
+format-volume = <ramp-volume><label-volume>
 
-format-volume-foreground = ${colors.foreground-alt}
+label-volume-padding-right = 3
+label-volume-foreground = ${colors.foreground-alt}
+label-volume-background = ${colors.background}
 ;format-volume-underline = ${colors.underground}
 
 ramp-volume-0 = 
@@ -221,8 +261,14 @@ ramp-volume-2 = 
 ramp-volume-3 = 
 
 ramp-volume-foreground = ${colors.underground}
+ramp-volume-background = ${colors.background}
+ramp-volume-padding-right = 1
+ramp-volume-padding-left = 6
+
 label-muted = 
-label-muted-foreground = ${colors.alert}
+label-muted-foreground = ${colors.foreground-alt}
+label-muted-background = ${colors.background}
+label-muted-padding = 3
 
 [module/toggl]
 type = custom/script
@@ -233,8 +279,13 @@ interval = 90
 
 format-foreground = ${colors.foreground-alt}
 format-underline = ${colors.underground}
+format-background = ${colors.background}
+format-prefix-background = ${colors.background}
 format-prefix = 
 format-prefix-padding-right = 1
+label-padding-right = 3
+format-prefix-padding-left = 6
+
 
 click-left = /home/kalior/projects/conky-toggl-button/toggl_toggl.py
 
@@ -247,6 +298,8 @@ interval = 30
 
 format-foreground = ${colors.foreground-alt}
 format-underline = ${colors.underground}
+format-background = ${colors.background}
+format-padding = 6
 
 [module/github]
 type = internal/github

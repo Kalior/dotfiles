@@ -129,16 +129,19 @@ alias synstart="synergyc --name vatten 192.168.30.104"
 alias launchsteam="LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so' steam"
 alias home="~/.screenlayout/home.sh"
 # Networkmanager aliases
-alias netcon="nmcli con up id"
+alias netcon="nmcli connection up"
 alias netlist="nmcli dev wifi list"
 
 alias lunch="curl https://chalmers.it/lunch/feed | less"
 
 alias e="exa"
-alias ea="exa -bghl --git" 
+alias ea="exa -bghl"
+alias eag="exa -bghl --git"
 alias eat="exa -bhl --git --tree -L 5"
 
 alias gsta="git stash push"
+
+alias nätverk="sudo nmcli dev wifi hotspot ifname wlp58s0 con-name where-the-wifi-at ssid 'Where the wifi at?' password 'nothereanyway'"
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
@@ -148,4 +151,9 @@ eval "$(fasd --init auto)"
 # Path additions
 #export PATH=$PATH:~/.cabal/bin
 # Archey3
-archey3
+PATH="/home/kalior/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/kalior/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/kalior/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/kalior/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/kalior/perl5"; export PERL_MM_OPT;
+

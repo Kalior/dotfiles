@@ -1,6 +1,8 @@
 xterm.background: black
 xterm.foreground: white
 
+URxvt.internalBorder:  8
+
 URxvt.loginshell: false
 URxvt.internalborder: 0
 URxvt.underlinecolor: #999999
@@ -47,7 +49,8 @@ Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
-#define fonts xft:Input:size=8, xft:Apple Color Emoji:size=8
+
+#define fonts xft:Input:size=9, xft:Apple Color Emoji:size=8
 
 URxvt.allow_bold:           false
 URxvt.font: fonts 
@@ -55,8 +58,8 @@ URxvt.boldFont: fonts
 URxvt.letterSpace: 1
 
 ! special
-*.foreground:   #f0f0f0
-*.background:   #161616
+*.foreground:   #f7f2ed
+*.background:   #1d1f21
 *.cursorColor:  #ffffff
 
 ! black

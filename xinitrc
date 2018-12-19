@@ -62,6 +62,7 @@ twmnd &
 xsetroot -cursor_name left_ptr &
 libinput-gestures-setup start &
 srandrd screenconfig &
+compton -b & 
 # xmonad grejer
 #trayer &
 #exec xmonad
