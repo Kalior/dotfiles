@@ -55,17 +55,16 @@ export SSH_AUTH_SOCK &
 
 modprobe vboxdrv &
 
-xrandr --output eDP1 --primary &
+xrandr --output eDP-1 --primary &
 xset r rate 300 45 &
 sh ~/.wallpaper.sh &
 twmnd &
 xsetroot -cursor_name left_ptr &
 libinput-gestures-setup start &
-srandrd screenconfig &
+srandrd -e screenconfig &
 compton -b & 
 # xmonad grejer
 #trayer &
 #exec xmonad
-
 #i3
 exec i3

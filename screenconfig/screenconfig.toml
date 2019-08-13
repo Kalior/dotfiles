@@ -1,0 +1,25 @@
+title = "Screen config"
+
+[monitors]
+
+[monitors.laptop]
+description = "laptop"
+edids = ["104D149A00000000"]
+resolution = "auto"
+
+#[monitors.home]
+#description = "home"
+#edids = []
+#resolution = "auto"
+#position = ["--right-of", "laptop"]
+
+#[monitors.work]
+#description = "work"
+#edids = ["AC10F1004147574C"]
+#resolution = "auto"
+#position = ["--right-of", "laptop"]
+#wallpaper = ""
+
+[monitors.default]
+resolution = "auto"
+position = ["--right-of", "laptop"]

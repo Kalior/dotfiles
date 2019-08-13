@@ -67,19 +67,18 @@ zstyle ':completion:*' special-dirs true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux rsync git zsh-syntax-highlighting)
+plugins=(archlinux python pyenv docker rsync git zsh-autosuggestions)
 
 # User configuration
 
 export PATH="/home/kalior/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/share/java/gradle/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
 PATH=$PATH:~/go/bin
-PATH=$PATH:~/.cabal/bin
-PATH=$PATH:~/.local/bin
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+#PATH=$PATH:~/.cabal/bin
+#PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.cargo/bin
 
-export ANDROID_HOME=/opt/android-sdk
+#export ANDROID_HOME=/opt/android-sdk
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -96,7 +95,7 @@ else
 fi
 
 if [[ -n "$DISPLAY" ]]; then
-    export BROWSER=chromium
+    export BROWSER=firefox
 else
     export BROWSER=w3m
 fi
@@ -117,9 +116,9 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-
+bindkey "^ " autosuggest-accept
 # init ruby stuff
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
 export PATH=$GEM_HOME/bin:$PATH
 
@@ -141,15 +140,18 @@ alias eat="exa -bhl --git --tree -L 5"
 
 alias gsta="git stash push"
 
-alias nätverk="sudo nmcli dev wifi hotspot ifname wlp58s0 con-name where-the-wifi-at ssid 'Where the wifi at?' password 'nothereanyway'"
+alias nätverk="sudo nmcli dev wifi hotspot ifname wlp59s0 con-name where-the-wifi-at ssid 'Where the wifi at?' password 'nothereanyway'"
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 eval "$(fasd --init auto)"
-
 # Path additions
 #export PATH=$PATH:~/.cabal/bin
+export PATH=$PATH:~/.local/bin
+
+eval $(thefuck --alias)
+eval "$(pipenv --completion)"
 # Archey3
 PATH="/home/kalior/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/kalior/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -157,3 +159,12 @@ PERL_LOCAL_LIB_ROOT="/home/kalior/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_
 PERL_MB_OPT="--install_base \"/home/kalior/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/kalior/perl5"; export PERL_MM_OPT;
 
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/sls.zsh ]] && . /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/slss.zsh ]] && . /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/slss.zsh

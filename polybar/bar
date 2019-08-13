@@ -17,7 +17,7 @@ green = #a3be8c
 monitor = ${env:MONITOR}
 bottom = true
 width = 100%
-height = 60
+height = 30
 radius = 0.0
 fixed-center = true
 scroll-up = i3wm-wsnext
@@ -26,21 +26,22 @@ scroll-down = i3wm-wsprev
 background = ${colors.background-transparent}
 foreground = ${colors.foreground-alt}
 
-line-size = 3
+line-size = 2
 line-color = #f00
 
-border-size = 12
+border-size = 1
 border-color = #00000000
 
-padding-left = 0
-padding-right = 0
+padding = 0
+padding-left = 1
+padding-right = 1
 
 module-radius = 0.0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = FontAwesome:size=18;3
-font-1 = Input:size=18;3
+font-0 = FontAwesome:size=9;3
+font-1 = Input Mono:size=9;3
 
 tray-position = none
 
@@ -49,7 +50,7 @@ tray-position = none
 
 modules-left = i3
 modules-center = spotify
-modules-right = personal-mail toggl volume wlan battery date random-time
+modules-right = end pacman personal-mail toggl volume wired-network wireless-network battery date random-time start
 
 [module/i3]
 type = internal/i3
@@ -140,7 +141,7 @@ ramp-capacity-8 = 
 
 ramp-capacity-foreground = ${colors.foreground-alt}
 ramp-capacity-background = ${colors.background}
-ramp-capacity-padding-right = 1
+ramp-capacity-padding-right = 2
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -151,7 +152,7 @@ animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-background = ${colors.background}
 animation-charging-framerate = 750
-animation-charging-padding-right = 1
+animation-charging-padding-right = 2
 
 
 [module/date]
@@ -173,9 +174,20 @@ format-background = ${colors.background}
 label = %date% %time%
 label-padding = 3
 
-[module/wlan]
+[module/wired-network]
 type = internal/network
-interface = wlp58s0
+interface = enp0s20f0u2u2
+interval = 3.0
+
+format-connected = <label-connected>
+label-connected = Virologen
+label-connected-padding = 3
+label-connected-foreground = ${colors.foreground-alt}
+label-connected-background = ${colors.background}
+
+[module/wireless-network]
+type = internal/network
+interface = wlp59s0
 interval = 3.0
 
 format-connected = <ramp-signal><label-connected>
@@ -200,7 +212,7 @@ ramp-signal-4 = 
 ramp-signal-foreground = ${colors.underground}
 ramp-signal-background = ${colors.background}
 ramp-signal-padding-left = 3
-ramp-signal-padding-right = 1
+ramp-signal-padding-right = 2
 
 [module/personal-mail]
 type = custom/script
@@ -226,8 +238,8 @@ interval = 30
 
 format-foreground = ${colors.foreground-alt}
 format-background = ${colors.background}
-format-padding = 3
-format-padding-right = 6
+format-padding-left = 3
+format-padding-right = 0
 ;format-underline = ${colors.underground}
 
 ;format-prefix = 
@@ -263,7 +275,7 @@ ramp-volume-3 = 
 ramp-volume-foreground = ${colors.underground}
 ramp-volume-background = ${colors.background}
 ramp-volume-padding-right = 1
-ramp-volume-padding-left = 6
+ramp-volume-padding-left = 3
 
 label-muted = 
 label-muted-foreground = ${colors.foreground-alt}
@@ -273,7 +285,7 @@ label-muted-padding = 3
 [module/toggl]
 type = custom/script
 
-exec = /home/kalior/projects/conky-toggl-button/togglconky.py print
+exec = /home/kalior/projects/personal/conky-toggl-button/togglconky.py print
 
 interval = 90
 
@@ -282,9 +294,9 @@ format-underline = ${colors.underground}
 format-background = ${colors.background}
 format-prefix-background = ${colors.background}
 format-prefix = 
-format-prefix-padding-right = 1
+format-prefix-padding-right = 2
 label-padding-right = 3
-format-prefix-padding-left = 6
+format-prefix-padding-left = 3
 
 
 click-left = /home/kalior/projects/conky-toggl-button/toggl_toggl.py
@@ -316,6 +328,38 @@ format-prefix-padding-right = 1
 
 format-foreground = ${colors.foreground-alt}
 format-underline = ${colors.underground}
+
+[module/pacman]
+type = custom/script
+
+exec = /home/kalior/.config/polybar/pacman.sh
+
+interval = 30
+
+format-foreground = ${colors.foreground-alt}
+;format-underline = ${colors.underground}
+format-background = ${colors.background}
+label-padding-right = 3
+
+format-prefix = <
+format-prefix-padding-right = 2
+format-prefix-padding-left = 2
+
+[module/end]
+type = custom/text
+
+content = {
+content-foreground = ${colors.foreground-alt}
+content-background = ${colors.background}
+content-padding = 3
+
+[module/start]
+type = custom/text
+
+content = }
+content-foreground = ${colors.foreground-alt}
+content-background = ${colors.background}
+content-padding = 3
 
 [settings]
 screenchange-reload = true

@@ -226,18 +226,9 @@ bindsym $mod+o scratchpad show
 bindsym $mod+shift+o move scratchpad
 
 # Media player controls
-# Now bound in ~/.xbindkeysrc
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-#bindsym "XF86AudioRaiseVolume" exec amixer set Master 5%+ && killall -USR1 i3status
-#bindsym XF86AudioLowerVolume exec amixer set Master 5%- && killall -USR1 i3status
-#bindsym XF86AudioMute exec amixer set Master toggle && killall -USR1 i3status
-
-# Screen brightness keys
-# Now bound in ~/.xbindkeysrc
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
 
 
 # lock
@@ -248,7 +239,7 @@ bindsym $mod+shift+l exec ~/.fancylock.sh
 bindsym $mod+shift+p exec --no-startup-id ~/.PastebinPaste.py -d 08aa025696c7414f335e27f847b95ae3
 
 # to kbfs
-bindsym --release Print exec scrot -e 'echo "https://kalior.keybase.pub/photos/$f" | xclip -sel clip && mv $f /keybase/public/kalior/photos/' -s
+bindsym --release Print exec scrot -s
 
 
 # more float

@@ -10,21 +10,17 @@ URxvt.cutchars: "`\"()*,<>[]{}|'"
 !URxvt.print-pipe: cat >/tmp/xxx
 URxvt.visualBell: false
 URxvt.urgentOnBell: true
-URxvt.perl-ext-common: default,clipboard,confirm-paste,url-select,bell-command,font-size
+URxvt.perl-ext-common: default,bell-command,clipboard,url-select,keyboard-select,selection-to-clipboard,resize-font
 URxvt.termName: rxvt-256color
 URxvt.iso14755: False
 
 ! --[ URxvt - URL Handling ]-------------------------------
-URxvt.url-select.launcher: chromium
+URxvt.url-select.launcher: firefox
 URxvt.url-select.underline: true
 URxvt.url-select.button: 1
 
 URxvt.keysym.M-u:   perl:url-select:select_next
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s    perl:keyboard-select:search
 ! TEST: http://www.google.com
 !
 URxvt.scrollBar: off
@@ -32,29 +28,27 @@ URxvt.scrollBar: off
 URxvt.depth: 32
 
 ! Change font size on the fly
-URxvt.keysym.C-Up:     perl:font-size:increase
-URxvt.keysym.C-Down:   perl:font-size:decrease
-URxvt.keysym.C-S-Up:   perl:font-size:incglobal
-URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.keysym.C-Up:     resize-font:bigger
+URxvt.keysym.C-Down:   resize-font:smaller
 
+URxvt.keysym.M-v:      clipboard:paste
+URxvt.keysym.M-c:      clipboard:copy
 !URxvt.iconFile: /usr/share/icons/gnome/48x48/apps/terminal.png
 
 !-------------------------------------------------------------------------------
 !! Xft settings
 !!-------------------------------------------------------------------------------
 !
-Xft.dpi:                    192
+Xft.dpi:                    96
 Xft.antialias:              true
 Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
 
-#define fonts xft:Input:size=9, xft:Apple Color Emoji:size=8
-
 URxvt.allow_bold:           false
-URxvt.font: fonts 
-URxvt.boldFont: fonts
+URxvt.font: xft:Input Mono:size=9
+URxvt.boldFont: xft:Input Mono:size=9
 URxvt.letterSpace: 1
 
 ! special
