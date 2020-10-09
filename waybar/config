@@ -1,0 +1,92 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar at the bottom of your screen
+    "height": 36, // Waybar height
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
+    "modules-center": [],
+    "modules-right": ["custom/pacman", "pulseaudio", "network", "cpu", "memory", "battery", "clock", "custom/time"],
+        "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "2:": "龜",
+            "13:": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip": false,
+        "format": "| {:%y/%m/%d}",
+    },
+    "cpu": {
+        "format": ""
+    },
+    "memory": {
+        "format": ""
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        // "format-good": "", // An empty format will hide the module
+        "format-full": "{icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "⚠",
+        //"interface": "wlp59s0"
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{icon}",
+        "format-bluetooth": "{icon} ",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/spotify": {
+        "format": "{}",
+        "max-length": 40,
+        "interval": 30, // Remove this if your script is endless and write in loop
+        "exec": "$HOME/.config/waybar/modules/spotify.sh 2> /dev/null", // Script in resources folder
+        "exec-if": "pgrep spotify"
+    },
+    "custom/time": {
+        "format": "{}",
+        "max-length": 40,
+        "tooltip": false,
+        "interval": 30,
+        "exec": "$HOME/.config/waybar/modules/randomTime.py 2> /dev/null"
+    },
+    "custom/pacman": {
+        "format": " {}",
+        "max-length": 40,
+        "interval": 30, // Remove this if your script is endless and write in loop
+        "exec": "$HOME/.config/waybar/modules/pacman.sh 2> /dev/null"
+    }
+}
