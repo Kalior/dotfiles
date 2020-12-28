@@ -7,11 +7,11 @@ configuration {
 }
 
 * {
-	background-color:            #00000066;
+	background-color:            #11111166;
 	text-background-color:       #111111;
 	text-color:                  #b3b3b3;
 	accent-color:                #91acd1;
-	active-background-color:     #111111;
+	active-background-color:     #222222;
 	urgbg:                       #e53935;
 	winbg:			     	     #26c6da;
 
@@ -52,6 +52,7 @@ window {
 mainbox {
 	spacing:  0em;
 	children: [ entry, listview ];
+	background-color: @text-background-color;
 }
 
 button { padding: 5px 2px; }
@@ -73,6 +74,7 @@ listview {
 	spacing: 0em;
 	dynamic: false;
 	cycle:   false;
+	columns: 1;
 	background-color: @text-background-color;
 }
 
@@ -102,7 +104,7 @@ element selected.normal {
 	background-color: @selected-normal-background;
 	text-color:       @selected-normal-foreground;
 	border:           0px 0px solid 0 2px;
-	border-color:	  @active-background;
+	border-color:	  @accent-color;
 }
 
 element selected.urgent {
