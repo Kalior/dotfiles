@@ -93,6 +93,7 @@ bindsym $mod+control+s workspace 13:
 bindsym $mod+control+t workspace 3:
 bindsym $mod+control+a workspace 14:
 bindsym $mod+control+d workspace 15:
+bindsym $mod+control+p workspace 16:p
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1:
 bindsym $mod+Shift+2 move container to workspace 2:
@@ -117,6 +118,7 @@ bindsym $mod+control+Shift+s move container to workspace 13:
 bindsym $mod+control+Shift+t move container to workspace 3:
 bindsym $mod+control+Shift+a move container to workspace 14:
 bindsym $mod+control+Shift+d move container to workspace 15:
+bindsym $mod+control+Shift+p move container to workspace 16:p
 # Put shi window on the presentation output.
 bindsym $mod+x move workspace to output right
 
@@ -204,21 +206,22 @@ for_window [title="Toggl Conky pop-up"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
 
 
 # i3-gaps
 #for_window [class="^.*"] border pixel 0
-#gaps inner 12
+gaps inner 2
 #gaps outer 2
-#smart_gaps on
+smart_gaps on
 #smart_borders on
 #hide_edge_borders both
 
 # colors
 # class                 border          backgr.     text        indicator child_border
-client.focused          #ffffff00       #ffffff00   #ffffff     #2e9ef4   #dddddd
-client.focused_inactive #ffffff00       #ffffff00   #ffffffaa   #484e50   #dddddd
-client.unfocused        #ffffff00       #ffffff00   #ffffff44   #292d2e   #222222
+client.focused          #ffffff00       #111111     #ffffff     #2e9ef4   #dddddd
+client.focused_inactive #ffffff00       #111111     #ffffffaa   #484e50   #dddddd
+client.unfocused        #ffffff00       #111111     #ffffff44   #292d2e   #222222
 client.urgent           #2f343a         #900000     #eeeeee     #900000   #900000
 client.placeholder      #000000         #0c0c0c     #eeeeee     #000000   #0c0c0c
 
