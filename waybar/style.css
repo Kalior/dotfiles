@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background: rgba(17, 17, 17, 0.418);
+  background: rgb(17, 17, 17);
   color: #b3b3b3;
 }
 
@@ -52,10 +52,16 @@ window#waybar {
 #custom-spotify,
 #custom-time,
 #custom-pacman,
+#custom-pipe,
 #tray,
 #mode {
   padding: 0 3px;
   margin: 0 5px;
+}
+
+#custom-pipe {
+  border-right: 2px solid #91acd1;
+  margin: 0 5px 0 -5px;
 }
 
 #custom-time {

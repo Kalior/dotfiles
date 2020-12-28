@@ -27,7 +27,7 @@
     },
     "clock": {
         "tooltip": false,
-        "format": "| {:%y/%m/%d}",
+        "format": "{:%y/%m/%d}",
     },
     "cpu": {
         "format": ""
@@ -51,6 +51,8 @@
         "format-wifi": "",
         "format-ethernet": "",
         "format-disconnected": "⚠",
+        "on-click": "/usr/bin/nm-connection-editor",
+        "tooltip-format": "{ifname} {essid}"
         //"interface": "wlp59s0"
     },
     "pulseaudio": {
@@ -88,5 +90,11 @@
         "max-length": 40,
         "interval": 30, // Remove this if your script is endless and write in loop
         "exec": "$HOME/.config/waybar/modules/pacman.sh 2> /dev/null"
+    },
+    "custom/pipe": {
+        "format": "{}",
+        "max-length": 40,
+        "interval": 30, // Remove this if your script is endless and write in loop
+        "exec": "echo ' '"
     }
 }
