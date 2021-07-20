@@ -1,0 +1,170 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+#env:
+# TERM variable
+#
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
+#TERM: alacritty
+
+window:
+  # Window dimensions (changes require restart)
+  #
+  # Specified in number of columns/lines, not pixels.
+  # If both are `0`, this setting is ignored.
+  #dimensions:
+  #  columns: 0
+  #  lines: 0
+
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 10
+    y: 10
+
+  # Spread additional padding evenly around the terminal content.
+  #dynamic_padding: false
+  # Startup Mode (changes require restart)
+  #
+  # Values for `startup_mode`:
+  #   - Windowed
+  #   - Maximized
+  #   - Fullscreen
+  #
+  # Values for `startup_mode` (macOS only):
+  #   - SimpleFullscreen
+  #startup_mode: Windowed
+  # Window title
+  #title: Alacritty
+  # scrollback is enabled (history > 0).
+  #multiplier: 3
+
+# Font configuration
+font:
+  normal:
+    family: Input Mono
+
+  # Point size
+  #size: 11.0
+
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+  offset:
+    x: 1
+    y: 0
+
+colors:
+  # Default colors
+  # Start flavours
+  primary:
+    #  background: '#161821'
+    #  foreground: '#d2d4de'
+
+    #  Custom primary
+    background: "#241E20"
+    foreground: "#f4e9b2"
+
+  # Normal colors
+  normal:
+    black: "#161821"
+    red: "#e27878"
+    green: "#b4be82"
+    yellow: "#e2a478"
+    blue: "#84a0c6"
+    magenta: "#a093c7"
+    cyan: "#89b8c2"
+    white: "#c6c8d1"
+
+  # Bright colors
+  bright:
+    black: "#6b7089"
+    red: "#e98989"
+    green: "#c0ca8e"
+    yellow: "#e9b189"
+    blue: "#91acd1"
+    magenta: "#ada0d3"
+    cyan: "#95c4ce"
+    white: "#d2d4de"
+
+  # End flavours
+# Visual Bell
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+#
+bell:
+  animation: Ease
+  duration: 100
+  color: "#131416"
+
+# Background opacity
+background_opacity: 0.95
+
+#selection:
+#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+
+# When set to `true`, selected text will be copied to the primary clipboard.
+#save_to_clipboard: false
+
+# Allow terminal applications to change Alacritty's window title.
+#dynamic_title: true
+
+cursor:
+  # Cursor style
+  #
+  # Values for `style`:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Beam
+
+#working_directory: None
+
+hints:
+  launcher:
+    program: xdg-open
+  #  args: []
+
+# Key bindings
+key_bindings:
+  - { key: V, mods: Alt, action: Paste }
+  - { key: C, mods: Alt, action: Copy }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Up, mods: Control, action: IncreaseFontSize }
+  - { key: Down, mods: Control, action: DecreaseFontSize }
+  - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
+#debug:
+# Display the time it takes to redraw each frame.
+#render_timer: false
+
+# Keep the log file after quitting Alacritty.
+#persistent_logging: false
+
+# Log level
+#
+# Values for `log_level`:
+#   - None
+#   - Error
+#   - Warn
+#   - Info
+#   - Debug
+#   - Trace
+#log_level: Warn
+
+# Print all received window events.
+#print_events: false
