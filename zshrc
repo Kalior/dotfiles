@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/kalior/.oh-my-zsh
+DISABLE_AUTO_UPDATE=true
 
 # Background is this neccesary? and also should this be done ine .xinitrc?
 # sh .fehbg
@@ -25,6 +26,7 @@ ZSH_THEME="kaliorparty"
 
 # Autocomplete .. to ../
 zstyle ':completion:*' special-dirs true
+zstyle ':completion:*:ssh:*' hosts off
 
 #
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -67,16 +69,24 @@ zstyle ':completion:*' special-dirs true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux python pyenv docker rsync git zsh-autosuggestions)
+plugins=(archlinux docker rsync git zsh-autosuggestions)
 
 # User configuration
 
 export PATH="/home/kalior/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/share/java/gradle/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
-PATH=$PATH:~/go/bin
+export PATH=$PATH:~/go/bin
 #PATH=$PATH:~/.cabal/bin
 #PATH=$PATH:~/.local/bin
-PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:~/.cargo/bin
+
+export PATH="$PATH:~/anaconda3/bin/"
+export PATH="$PATH:~/.yarn/bin/"
+
+export SPICETIFY_INSTALL="/home/kalior/projects/personal/spicetify-cli"
+export PATH="$SPICETIFY_INSTALL:$PATH"
+export PATH="/home/kalior/.npm/bin/:$PATH"
+export PATH="/home/kalior/bin/:$PATH"
 
 #export ANDROID_HOME=/opt/android-sdk
 
@@ -117,24 +127,26 @@ fi
 
 
 bindkey "^ " autosuggest-accept
+
 # init ruby stuff
-eval "$(rbenv init -)"
-export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
-export PATH=$GEM_HOME/bin:$PATH
+#eval "$(rbenv init -)"
+#export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+#export PATH=$GEM_HOME/bin:$PATH
 
 alias irkk="ssh -t cantina irkk"
 alias path="echo $PATH | tr ':' '\n'"
-alias synstart="synergyc --name vatten 192.168.30.104"
+#alias synstart="synergyc --name vatten 192.168.30.104"
 alias launchsteam="LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so' steam"
-alias home="~/.screenlayout/home.sh"
+#alias home="~/.screenlayout/home.sh"
 # Networkmanager aliases
 alias netcon="nmcli connection up"
 alias netlist="nmcli dev wifi list"
 
-alias lunch="curl https://chalmers.it/lunch/feed | less"
+#alias lunch="curl https://chalmers.it/lunch/feed | less"
 
 alias e="exa"
 alias ea="exa -bghl"
+alias ead="exa -bghl --sort=mod"
 alias eag="exa -bghl --git"
 alias eat="exa -bhl --git --tree -L 5"
 
@@ -142,7 +154,23 @@ alias gsta="git stash push"
 
 alias nätverk="sudo nmcli dev wifi hotspot ifname wlp59s0 con-name where-the-wifi-at ssid 'Where the wifi at?' password 'nothereanyway'"
 
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+alias guvpn="cat ~/.xgujoe-key | sudo openconnect -u xgujoe --passwd-on-stdin fxasa.vpn.gu.se -s 'vpn-slice --verbose --dump hebbe=hebbe2.c3se.chalmers.se=129.16.125.144'" 
+
+alias ssh="TERM=xterm-256color ssh"
+alias singularity="TERM=xterm-256color singularity"
+
+alias transfer="rsync --info=progress2 -r"
+
+alias obs="QT_QPA_PLATFORM=xcb obs"
+
+#function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+
+# fh - repeat history
+fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
+}
+
 
 #eval "$(rbenv init -)"
 eval "$(fasd --init auto)"
@@ -159,6 +187,9 @@ PERL_LOCAL_LIB_ROOT="/home/kalior/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_
 PERL_MB_OPT="--install_base \"/home/kalior/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/kalior/perl5"; export PERL_MM_OPT;
 
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/serverless.zsh
@@ -168,3 +199,18 @@ PERL_MM_OPT="INSTALL_BASE=/home/kalior/perl5"; export PERL_MM_OPT;
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/slss.zsh ]] && . /home/kalior/projects/personal/hashtag-lunch-reviews/serverless-api/node_modules/tabtab/.completions/slss.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/kalior/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/kalior/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/kalior/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/kalior/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

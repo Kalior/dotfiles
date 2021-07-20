@@ -51,8 +51,11 @@ URxvt.font: xft:Input Mono:size=9
 URxvt.boldFont: xft:Input Mono:size=9
 URxvt.letterSpace: 1
 
+URxvt.transparent:   false
+!URxvt.shading:       10
+
 ! special
-*.foreground:   #f7f2ed
+*.foreground:   #f4e9b2
 *.background:   #1d1f21
 *.cursorColor:  #ffffff
 

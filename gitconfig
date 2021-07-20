@@ -9,3 +9,7 @@
 
 [pull]
     ff = false
+[init]
+	defaultBranch = main
+[credential]
+	helper = cache

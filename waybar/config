@@ -3,16 +3,17 @@
     "position": "bottom", // Waybar at the bottom of your screen
     "height": 36, // Waybar height
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify", "custom/cava"],
     "modules-center": [],
-    "modules-right": ["custom/pacman", "pulseaudio", "network", "cpu", "memory", "battery", "clock", "custom/time"],
+    "modules-right": ["custom/soltid", "custom/pacman", "pulseaudio", "network", "cpu", "memory", "battery", "clock", "custom/time"],
         "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "2:": "龜",
+            "2:": "",
             "13:": "",
+            "17:": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -57,8 +58,8 @@
     },
     "pulseaudio": {
         //"scroll-step": 1,
-        "format": "{icon}",
-        "format-bluetooth": "{icon} ",
+        "format": "{icon}  {format_source}",
+        "format-bluetooth": "{icon}  {format_source}",
         "format-muted": "",
         "format-icons": {
             "headphones": "",
@@ -69,7 +70,11 @@
             "car": "",
             "default": ["", ""]
         },
-        "on-click": "pavucontrol"
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
     },
     "custom/spotify": {
         "format": "{}",
@@ -77,6 +82,12 @@
         "interval": 30, // Remove this if your script is endless and write in loop
         "exec": "$HOME/.config/waybar/modules/spotify.sh 2> /dev/null", // Script in resources folder
         "exec-if": "pgrep spotify"
+    },
+    "custom/cava": {
+        "format": "{}",
+        "max-length": 40,
+        "tooltip": false,
+        "exec": "/usr/bin/cava",
     },
     "custom/time": {
         "format": "{}",
@@ -96,5 +107,13 @@
         "max-length": 40,
         "interval": 30, // Remove this if your script is endless and write in loop
         "exec": "echo ' '"
+    },
+    "custom/soltid": {
+        "format": " {} ",
+        "max-length": 40,
+        "return-type": "json",
+        "tooltip": "true",
+        "interval": 600, // Remove this if your script is endless and write in loop
+        "exec": "$HOME/.config/waybar/modules/soltid.py 2> /dev/null"
     }
 }

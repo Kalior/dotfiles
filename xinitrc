@@ -57,14 +57,11 @@ modprobe vboxdrv &
 
 xrandr --output eDP-1 --primary &
 xset r rate 300 45 &
-sh ~/.wallpaper.sh &
+#sh ~/.wallpaper.sh &
+feh --bg-max close-up-photo-ofg-light-bulb-716398-corrupted.png  --image-bg "#241E20" & 
 twmnd &
 xsetroot -cursor_name left_ptr &
 libinput-gestures-setup start &
 srandrd -e screenconfig &
-compton -b & 
-# xmonad grejer
-#trayer &
-#exec xmonad
-#i3
+DISPLAY=":0" picom -b --respect-prop-shadow & 
 exec i3

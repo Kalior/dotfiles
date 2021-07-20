@@ -1,56 +1,98 @@
 [colors]
-;background = ${xrdb:color0:#222}
-background-transparent = #00000000
-background = #1d1f21
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #f7f2ed
-foreground-alt = #999
+background = #241E20
+background-transparent = #bfff
+background-alt = #241E2099
+foreground = #f4e9b2
+foreground-alt = #f4e9b2
 primary = #ffb52a
-secondary = #C6572F
-alert = #bd2c40
-underground = #24708A
+alert = #d8a818
+underground = #111
 underground-transparent = #00000000
-green = #a3be8c
+green = #111
+
 
 [bar/i3bar]
 monitor = ${env:MONITOR}
 bottom = true
-width = 100%
-height = 30
-radius = 0.0
+height = 38
+radius = 0
 fixed-center = true
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
+enable-ipc = true
+border-transparent = true
+pseudo-transparency = true
 
-background = ${colors.background-transparent}
+background = ${colors.background}
 foreground = ${colors.foreground-alt}
 
-line-size = 2
+line-size = 1
 line-color = #f00
 
-border-size = 1
+border-size = 0
 border-color = #00000000
 
 padding = 0
-padding-left = 1
-padding-right = 1
+padding-left = 4
+padding-right = 4
 
 module-radius = 0.0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = FontAwesome:size=9;3
-font-1 = Input Mono:size=9;3
+font-0 = Font Awesome 5 Free-Solid:pixelsize=10;3
+font-1 = Input Mono:pixelsize=10;3
+font-2 = Font Awesome 5 Free:pixelsize=10;3
+font-3 = Font Awesome 5 Free Solid:pixelsize=10;3
+font-4 = Font Awesome 5 Brands:pixelsize=10;3
 
 tray-position = none
 
 ;wm-restack = i3
 ;override-redirect = true
 
-modules-left = i3
-modules-center = spotify
-modules-right = end pacman personal-mail toggl volume wired-network wireless-network battery date random-time start
+offset-x = 0
+offset-y = 16
+width = 100%
+
+modules-left = cpu memory
+modules-center = i3
+modules-right = pacman volume wireless-network date random-time
+
+[bar/onlyi3]
+inherit = bar/i3bar
+width = 100%
+background = ${colors.underground-transparent}
+
+wm-restack = none
+override-redirect = true
+
+modules-left =
+modules-center = i3
+modules-right =
+
+[bar/right]
+inherit = bar/i3bar
+offset-x = 90%:-16
+offset-y = 16
+width = 25%
+
+modules-left =
+modules-center =
+modules-right = end pacman volume wired-network wireless-network battery date random-time start
+
+
+[bar/left]
+inherit = bar/i3bar
+offset-x = 0
+offset-y = 16
+width = 25%
+
+
+modules-left = toggl
+modules-center =
+modules-right =
+
 
 [module/i3]
 type = internal/i3
@@ -123,9 +165,8 @@ label-charging-background = ${colors.background}
 
 label-full = %{}
 format-full-prefix = 
-format-full-prefix-foreground = ${colors.underground}
+format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-background = ${colors.background}
-;format-full-underline = ${colors.underground}
 
 ramp-capacity-0 = 
 ramp-capacity-0-foreground = ${colors.alert}
@@ -163,13 +204,8 @@ date = "%Y %m %d"
 
 time =
 
-;format-prefix-padding-left = 3
-;format-prefix-padding-right = 1
-;format-prefix =
-;format-prefix-foreground = ${colors.underground}
 format-foreground = ${colors.foreground-alt}
 format-background = ${colors.background}
-;format-underline = ${colors.underground}
 
 label = %date% %time%
 label-padding = 3
@@ -191,7 +227,6 @@ interface = wlp59s0
 interval = 3.0
 
 format-connected = <ramp-signal><label-connected>
-;format-connected-underline = ${colors.underground}
 label-connected = %essid%
 label-connected-padding-right = 3
 label-connected-foreground = ${colors.foreground-alt}
@@ -204,35 +239,21 @@ label-disconnected = 
 label-disconnected-foreground = ${colors.foreground-alt}
 label-disconnected-background = ${colors.background}
 
+
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.underground}
+ramp-signal-foreground = ${colors.foreground-alt}
 ramp-signal-background = ${colors.background}
 ramp-signal-padding-left = 3
 ramp-signal-padding-right = 2
 
-[module/personal-mail]
-type = custom/script
-
-exec = /home/kalior/.config/polybar/mailtext.py kalioragus@gmail.com fcmuhkrtibcgjqdq
-
-interval = 90
-
-format-foreground = ${colors.foreground-alt}
-format-underline = ${colors.underground}
-format-background = ${colors.background}
-format-margin = 3
-format-padding = 3
-
-click-left = chromium https://inbox.google.com/u/0/ > /dev/null
-
 [module/random-time]
 type = custom/script
 
-exec = /home/kalior/.config/polybar/randomTime.py
+exec = ~/.config/polybar/randomTime.py
 
 interval = 30
 
@@ -240,11 +261,7 @@ format-foreground = ${colors.foreground-alt}
 format-background = ${colors.background}
 format-padding-left = 3
 format-padding-right = 0
-;format-underline = ${colors.underground}
 
-;format-prefix = 
-;format-prefix-padding-right = 0
-;format-prefix-foreground = ${colors.underground}
 
 [module/volume]
 type = internal/alsa
@@ -265,16 +282,15 @@ format-volume = <ramp-volume><label-volume>
 label-volume-padding-right = 3
 label-volume-foreground = ${colors.foreground-alt}
 label-volume-background = ${colors.background}
-;format-volume-underline = ${colors.underground}
 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
 
-ramp-volume-foreground = ${colors.underground}
+ramp-volume-foreground = ${colors.foreground-alt}
 ramp-volume-background = ${colors.background}
-ramp-volume-padding-right = 1
+ramp-volume-padding-right = 2
 ramp-volume-padding-left = 3
 
 label-muted = 
@@ -285,7 +301,7 @@ label-muted-padding = 3
 [module/toggl]
 type = custom/script
 
-exec = /home/kalior/projects/personal/conky-toggl-button/togglconky.py print
+exec = ~/projects/personal/conky-toggl-button/togglconky.py print
 
 interval = 90
 
@@ -299,12 +315,12 @@ label-padding-right = 3
 format-prefix-padding-left = 3
 
 
-click-left = /home/kalior/projects/conky-toggl-button/toggl_toggl.py
+click-left = ~/projects/conky-toggl-button/toggl_toggl.py
 
 [module/spotify]
 type = custom/script
 
-exec = /home/kalior/.config/polybar/spotify.sh
+exec = ~/.config/polybar/spotify.sh
 
 interval = 30
 
@@ -316,7 +332,7 @@ format-padding = 6
 [module/github]
 type = internal/github
 
-token = ${file:/home/kalior/.github-notifications-token}
+token = ${file:~/.github-notifications-token}
 
 empty-notifications = false
 
@@ -332,18 +348,30 @@ format-underline = ${colors.underground}
 [module/pacman]
 type = custom/script
 
-exec = /home/kalior/.config/polybar/pacman.sh
+exec = ~/.config/polybar/pacman.sh
 
 interval = 30
 
 format-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.underground}
 format-background = ${colors.background}
 label-padding-right = 3
 
 format-prefix = <
 format-prefix-padding-right = 2
 format-prefix-padding-left = 2
+
+[module/pomobar]
+type=custom/ipc
+hook-0 = cat ~/.pomobaroutput
+initial=1
+click-left = ~/.config/polybar/pomobar.py --action=new &
+click-middle= ~/.config/polybar/pomobar.py --action=kill &
+click-right = ~/.config/polybar/pomobar.py --action=break &
+
+format-foreground = ${colors.foreground-alt}
+format-underline = ${colors.underground}
+format-background = ${colors.background}
+format-padding = 3
 
 [module/end]
 type = custom/text
@@ -367,3 +395,24 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 5
+
+label =  %gb_used%/%gb_total%
+
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 5
+
+label-padding-right = 3
+label = %percentage%%

@@ -1,25 +1,63 @@
-title = "Screen config"
+title = "Screen configuration"
 
 [monitors]
 
+# The name of the top-level keys you can choose to your liking but they have to
+# start with "monitors".
 [monitors.laptop]
-description = "laptop"
+description = "Laptop"
+# EDID is an identifier that is unique to each screen.  If you call
+# `srandrd list` it will provide an overview of the connected screens with their
+# EDIDs
 edids = ["104D149A00000000"]
 resolution = "auto"
+# The path to a wallpaper can be specified for each screen.  The wallpaper is
+# set through the tool "feh"
+# wallpaper = "~/wallpaper1920x1080.png"
+# List of commands that are executed when a monitor is connected or disconnected
+# - All SRANDRD_* environment variables of the event are available to the
+#   command and can be used by it.  If the command is prefixed with
+#   ["sh", "-c", ...] the variables can be used directly in the command's
+#   arguments.
+# - The event parameters can also be used in the command's arguments with the
+#   python string formatting syntax: {.ATTRIBUTE}.  The following attributes are
+#   available:
+#   - event: either connected or disconnected
+#   - output: name of the xrandr output that triggered the event
+#   - edid: EDID of the monitor
+#   - screenid: XINERAMA screen id
+# exec_on_connect = [
+# ["touch", "/tmp/test/file"],
+# ["sh", "-x", "-c", "touch /tmp/test/$SRANDRD_EVENT"],
+# Don't specify exec_on_disconnect here, it will never be triggered
+# because EDID is not available!
+# ["touch", "/tmp/test/{.output}"]
+# ]
 
-#[monitors.home]
-#description = "home"
-#edids = []
-#resolution = "auto"
-#position = ["--right-of", "laptop"]
 
-#[monitors.work]
-#description = "work"
-#edids = ["AC10F1004147574C"]
-#resolution = "auto"
-#position = ["--right-of", "laptop"]
-#wallpaper = ""
+# The default configuration that's applied if no other configuration matches.  A
+# different section can be selected by setting the environment variable
+# SCREENCONFIG_DEFAULT to the name of a different section.  This might be
+# useful to use the same configuration file for multiple computers.
+#
+# E.g. put the following in your work computer's bashrc
+# export SCREENCONFIG_DEFAULT="monitors.default-work"
+[monitors.juicetv]
+description = "TVn hos juice"
+edids = ["2D4C0D3A01000600"]
+resolution = "1920x1080"
+
 
 [monitors.default]
-resolution = "auto"
 position = ["--right-of", "laptop"]
+resolution = "auto"
+#wallpaper = "~/wallpaper1920x1200.png"
+# exec_on_connect = [
+# ["touch", "/tmp/test/file"],
+# ["sh", "-x", "-c", "touch /tmp/test/$SRANDRD_EVENT"],
+# ["touch", "/tmp/test/{.output}"]
+# ]
+# The disconnect commands will only be triggered from the default
+# configuration because EDID is not available!
+# exec_on_disconnect = [
+# ]

@@ -1,8 +1,6 @@
 # sway config file
 
-
 set $mod Mod4
-
 
 font xft:InputMono
 
@@ -16,14 +14,14 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # launch programs
-bindsym $mod+d exec ~/.rofi
+bindsym $mod+d exec ~/.wofi
 
 
 # change focus
-#bindsym $mod+j focus left
-#bindsym $mod+m focus down
-#bindsym $mod+i focus up
-#bindsym $mod+k focus right
+bindsym $mod+j focus left
+bindsym $mod+m focus down
+bindsym $mod+i focus up
+bindsym $mod+k focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -71,7 +69,7 @@ bindsym $mod+a focus parent
 
 # switch to workspace
 bindsym $mod+1 workspace 1:
-bindsym $mod+2 workspace 2:
+bindsym $mod+2 workspace 2:
 bindsym $mod+3 workspace 3:
 bindsym $mod+4 workspace 4:
 bindsym $mod+5 workspace 5:
@@ -88,15 +86,14 @@ bindsym $mod+control+4 workspace 9:
 bindsym $mod+control+5 workspace 10:
 bindsym $mod+control+w workspace 11:
 bindsym $mod+control+l workspace 12:
-bindsym $mod+control+c workspace 2:
+bindsym $mod+control+c workspace 17:
 bindsym $mod+control+s workspace 13:
-bindsym $mod+control+t workspace 3:
 bindsym $mod+control+a workspace 14:
 bindsym $mod+control+d workspace 15:
 bindsym $mod+control+p workspace 16:p
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1:
-bindsym $mod+Shift+2 move container to workspace 2:
+bindsym $mod+Shift+2 move container to workspace 2:
 bindsym $mod+Shift+3 move container to workspace 3:
 bindsym $mod+Shift+4 move container to workspace 4:
 bindsym $mod+Shift+5 move container to workspace 5:
@@ -113,9 +110,8 @@ bindsym $mod+control+shift+4 move container to workspace 9:
 bindsym $mod+control+shift+5 move container to workspace 10:
 bindsym $mod+control+Shift+w move container to workspace 11:
 bindsym $mod+control+Shift+l move container to workspace 12:
-bindsym $mod+control+Shift+c move container to workspace 2:
+bindsym $mod+control+Shift+c move container to workspace 17:
 bindsym $mod+control+Shift+s move container to workspace 13:
-bindsym $mod+control+Shift+t move container to workspace 3:
 bindsym $mod+control+Shift+a move container to workspace 14:
 bindsym $mod+control+Shift+d move container to workspace 15:
 bindsym $mod+control+Shift+p move container to workspace 16:p
@@ -132,9 +128,9 @@ mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
         bindsym j resize shrink width 10 px or 10 ppt
+        bindsym i resize grow width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -157,7 +153,7 @@ input type:keyboard {
   repeat_delay 250
   repeat_rate 30
   xkb_layout "se"
-  xkb_options caps:escape
+  xkb_options "caps:escape"
 }
 
 input type:touchpad {
@@ -210,24 +206,33 @@ for_window [app_id="nm-connection-editor"] floating enable
 
 
 # i3-gaps
-#for_window [class="^.*"] border pixel 0
+default_border pixel 1
+
 gaps inner 2
-#gaps outer 2
+#gaps outer 0
 smart_gaps on
-#smart_borders on
+smart_borders on
 #hide_edge_borders both
+
 
 # colors
 # class                 border          backgr.     text        indicator child_border
-client.focused          #ffffff00       #111111     #ffffff     #2e9ef4   #dddddd
-client.focused_inactive #ffffff00       #111111     #ffffffaa   #484e50   #dddddd
-client.unfocused        #ffffff00       #111111     #ffffff44   #292d2e   #222222
+client.focused          #FFFFFF00       #111111     #ffffff     #2e9ef4   #FFFFFF66
+client.focused_inactive #FFFFFF00       #111111     #ffffffaa   #484e50   #FFFFFF66
+client.unfocused        #FFFFFF00       #111111     #ffffff44   #292d2e   #FFFFFF66
 client.urgent           #2f343a         #900000     #eeeeee     #900000   #900000
 client.placeholder      #000000         #0c0c0c     #eeeeee     #000000   #0c0c0c
 
 client.background       #ffffff
 
+
 output "*" bg /home/kalior/media/close-up-photo-ofg-light-bulb-716398-corrupted.png fit #241E20
 
-output eDP-1 pos 0 0
-output DP-3 pos 1920 0
+output eDP-1 pos 2560 0
+output DP-1 pos 0 0
+
+#output eDP-1 pos 0 0
+
+# For gammastep
+exec systemctl --user import-environment
+exec systemctl --user start graphical-session.target
