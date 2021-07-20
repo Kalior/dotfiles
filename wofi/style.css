@@ -1,0 +1,42 @@
+window {
+	border: 1px solid #ffffff66;
+	background-color: rgba(0, 0, 0, 0.4);
+	color: #f4e9b2;
+}
+
+#input {
+	padding-bottom: 5px;
+	background-color: transparent;
+	color: #f4e9b2;
+	background-color: #241e20;
+}
+
+#inner-box {
+	background-color: #241e20;
+	padding-left: 5px;
+}
+
+#outer-box {
+	padding-top: -100px;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-right: 1800px;
+	margin: 0;
+}
+
+#scroll {
+	background-color: transparent;
+}
+
+#text {
+	color: #f4e9b2;
+	background-color: transparent;
+}
+#entry {
+	padding: 5px;
+}
+
+#entry:selected {
+	background-color: rgba(255, 255, 255, 0.3);
+	border-left: 2px solid #f4e9b2;
+	padding-left: -3px;
+}
