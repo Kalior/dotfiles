@@ -1,0 +1,1 @@
+wofi --show run --style .config/wofi/style.css --allow-images --allow-markup --width 35% --height 93% --location center --yoffset 0
