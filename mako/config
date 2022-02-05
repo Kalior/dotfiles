@@ -1,0 +1,11 @@
+anchor=bottom-right
+background-color=#241E20F2
+text-color=#f4e9b2
+font="Input Mono" 10
+border-size=1
+border-color=#FFFFFF66
+default-timeout=4500
+ignore-timeout=1
+padding=5
+margin=0
+
