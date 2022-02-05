@@ -45,6 +45,7 @@ window:
   #title: Alacritty
   # scrollback is enabled (history > 0).
   #multiplier: 3
+  opacity: 0.95
 
 # Font configuration
 font:
@@ -112,8 +113,6 @@ bell:
   duration: 100
   color: "#131416"
 
-# Background opacity
-background_opacity: 0.95
 
 #selection:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
