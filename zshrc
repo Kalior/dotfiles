@@ -163,6 +163,7 @@ alias transfer="rsync --info=progress2 -r"
 
 alias obs="QT_QPA_PLATFORM=xcb obs"
 
+alias profile="sudo perf record -e cycles -e sched:sched_switch --switch-events --sample-cpu -m 8M --aio -z --call-graph dwarf"
 #function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 
@@ -179,7 +180,8 @@ eval "$(fasd --init auto)"
 export PATH=$PATH:~/.local/bin
 
 eval $(thefuck --alias)
-eval "$(pipenv --completion)"
+eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+#eval "$(pipenv --completion)"
 # Archey3
 PATH="/home/kalior/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/kalior/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -214,3 +216,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+#
+
+export PYTHONSTARTUP=~/.ptyhon_startup

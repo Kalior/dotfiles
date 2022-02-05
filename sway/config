@@ -165,6 +165,9 @@ input type:touchpad {
 # Tabbing between workspaces
 bindsym $mod+Tab workspace back_and_forth
 
+bindsym $mod+Alt+Right workspace next_on_output
+bindsym $mod+Alt+Left workspace prev_on_output
+
 
 #window styling
 default_border none
@@ -175,14 +178,19 @@ bindsym $mod+b border toggle
 # scratchpad
 bindsym $mod+o scratchpad show
 bindsym $mod+shift+o move scratchpad
+bindsym $mod+control+o sticky toggle
+
+# For wob
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
 # Media player controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -233,6 +241,16 @@ output DP-1 pos 0 0
 
 #output eDP-1 pos 0 0
 
+# Autotiling
+exec /usr/bin/autotiling
+
+# For wob
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 # For gammastep
 exec systemctl --user import-environment
 exec systemctl --user start graphical-session.target
+
+# nwg dock
+exec_always nwg-dock -d
+bindsym $mod+n exec nwg-dock

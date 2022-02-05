@@ -60,7 +60,7 @@
         //"scroll-step": 1,
         "format": "{icon}  {format_source}",
         "format-bluetooth": "{icon}  {format_source}",
-        "format-muted": "",
+        "format-muted": " {format_source}",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
@@ -70,7 +70,7 @@
             "car": "",
             "default": ["", ""]
         },
-        "format-source": "{volume}% ",
+        "format-source": "",
         "format-source-muted": "",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
@@ -87,7 +87,7 @@
         "format": "{}",
         "max-length": 40,
         "tooltip": false,
-        "exec": "/usr/bin/cava",
+        "exec": "/usr/bin/cava"
     },
     "custom/time": {
         "format": "{}",
