@@ -1,0 +1,9 @@
+[Unit]
+Description=Fusuma - gesture detection
+
+[Service]
+ExecStart=/usr/bin/fusuma &> 
+LogLevelMax=3
+
+[Install]
+WantedBy=default.target
