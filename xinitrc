@@ -58,10 +58,10 @@ modprobe vboxdrv &
 xrandr --output eDP-1 --primary &
 xset r rate 300 45 &
 #sh ~/.wallpaper.sh &
-feh --bg-max close-up-photo-ofg-light-bulb-716398-corrupted.png  --image-bg "#241E20" & 
+feh --bg-max ~/media/close-up-photo-ofg-light-bulb-716398-corrupted.png  --image-bg "#241E20" & 
 twmnd &
 xsetroot -cursor_name left_ptr &
 libinput-gestures-setup start &
 srandrd -e screenconfig &
-DISPLAY=":0" picom -b --respect-prop-shadow & 
+#DISPLAY=":0" picom -b --respect-prop-shadow & 
 exec i3

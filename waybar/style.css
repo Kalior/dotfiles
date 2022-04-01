@@ -3,8 +3,8 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: InputMono, "Font Awesome 5 Brands", "Font Awesome 5 Free Solid",
-    "Font Awesome 5 Free Regular";
+  font-family: InputMono, "Font Awesome 6 Brands", "Font Awesome 6 Free Solid",
+    "Font Awesome 6 Free Regular";
   font-size: 12px;
   min-height: 0;
 }
@@ -16,7 +16,7 @@ window#waybar {
 
 #window {
   font-weight: bold;
-  font-family: "Ubuntu";
+  /*font-family: "Ubuntu";*/
 }
 
 #workspaces button {
@@ -32,8 +32,8 @@ window#waybar {
 }
 
 #workspaces button.urgent {
-  color: #e98989;
-  border-bottom: 2px solid #e98989;
+  color: #ea6f84;
+  border-bottom: 2px solid #ea6f84;
 }
 
 #workspaces button:hover {
@@ -75,7 +75,7 @@ window#waybar {
 }
 
 #battery icon {
-  color: red;
+  color: #ea6f84;
 }
 
 @keyframes blink {
@@ -86,7 +86,7 @@ window#waybar {
 }
 
 #battery.warning:not(.charging) {
-  color: white;
+  color: #ea6f84;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -95,5 +95,15 @@ window#waybar {
 }
 
 #network.disconnected {
-  color: #f53c3c;
+  color: #ea6f84;
+}
+
+#memory.full {
+  color: #ea6f84;
+}
+#memory.okay {
+  color: #faf6df;
+}
+#memory.empty {
+  color: #faf6df;
 }

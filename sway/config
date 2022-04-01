@@ -2,7 +2,7 @@
 
 set $mod Mod4
 
-font xft:InputMono
+font pango 14px
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -161,6 +161,10 @@ input type:touchpad {
   tap enabled
 }
 
+mode passthrough {
+	bindsym $mod+p mode default
+}
+bindsym $mod+p mode passthrough
 
 # Tabbing between workspaces
 bindsym $mod+Tab workspace back_and_forth
@@ -241,9 +245,6 @@ output DP-1 pos 0 0
 
 #output eDP-1 pos 0 0
 
-# Autotiling
-exec /usr/bin/autotiling
-
 # For wob
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
@@ -252,5 +253,5 @@ exec systemctl --user import-environment
 exec systemctl --user start graphical-session.target
 
 # nwg dock
-exec_always nwg-dock -d
-bindsym $mod+n exec nwg-dock
+#exec_always nwg-dock -d
+#bindsym $mod+n exec nwg-dock
