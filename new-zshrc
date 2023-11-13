@@ -1,0 +1,84 @@
+source /home/kalior/projects/personal/antigen/antigen.zsh
+antigen init ~/.antigenrc
+
+
+export PATH="/home/kalior/.npm/bin/:$PATH"
+export PATH="/home/kalior/.cargo/bin/:$PATH"
+export PATH="/home/kalior/bin/:$PATH"
+export PATH="/home/kalior/go/bin/:$PATH"
+export PATH="/home/kalior/.local/bin/:$PATH"
+export PATH="/home/kalior/.local/bin/spades/:$PATH"
+export PATH="/home/kalior/.local/share/gem/ruby/3.0.0/bin/:$PATH"
+
+
+
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+else
+    export EDITOR='vim'
+fi
+
+if [[ -n "$DISPLAY" ]]; then
+    export BROWSER=firefox
+else
+    export BROWSER=w3m
+fi
+
+bindkey "^ " autosuggest-accept
+
+# Networkmanager aliases
+alias netcon="nmcli connection up"
+alias netlist="nmcli dev wifi list"
+alias feh="feh -."
+
+alias e="exa"
+alias ea="exa -bghl"
+alias ead="exa -bghl --sort=mod"
+alias eag="exa -bghl --git"
+alias eat="exa -bhl --git --tree -L 5"
+
+
+alias ssh="TERM=xterm-256color ssh"
+alias singularity="TERM=xterm-256color singularity"
+alias apptainer="TERM=xterm-256color apptainer"
+
+alias nätverk="sudo nmcli dev wifi hotspot ifname wlp0s20f3 con-name where-the-wifi-at ssid 'Where the wifi at?' password 'nothereanyway'"
+alias transfer="rsync --info=progress2 -r"
+
+alias zoom="XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=GNOME /usr/bin/zoom"
+alias obs="QT_QPA_PLATFORM=xcb obs"
+
+alias profile="sudo perf record -e cycles -e sched:sched_switch --switch-events --sample-cpu
+-m 8M --aio -z --call-graph dwarf"
+
+eval "$(fasd --init auto)"
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export PYTHONSTARTUP=~/.python_startup
+
+export ENTREZ_EMAIL="me@joelgustafsson.com"
+export ENTREZ_API_KEY="1b3d60ba4cfec355d2ef825a5e26e13a4809"
+
+source /usr/bin/virtualenvwrapper_lazy.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+        . "/usr/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+. ~/.hatch-complete.zsh
+
