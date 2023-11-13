@@ -15,7 +15,7 @@ pinch:
     sendkey: "LEFTALT+TAB"
 
 threshold:
-  swipe: 0.5
+  swipe: 0.8
   pinch: 0.2
 
 interval:

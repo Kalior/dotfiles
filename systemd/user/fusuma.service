@@ -2,7 +2,7 @@
 Description=Fusuma - gesture detection
 
 [Service]
-ExecStart=/usr/bin/fusuma &> 
+ExecStart=/home/kalior/.local/share/gem/ruby/3.0.0/bin/fusuma &> 
 LogLevelMax=3
 
 [Install]

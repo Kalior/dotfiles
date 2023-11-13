@@ -50,10 +50,10 @@ window:
 # Font configuration
 font:
   normal:
-    family: Input Mono
+    family: Iosevka #Input Mono
 
   # Point size
-  #size: 11.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -64,36 +64,48 @@ font:
 colors:
   # Default colors
   # Start flavours
+# Base16 darkmoss 256 - alacritty color config
+# Gabriel Avanzi (https://github.com/avanzzzi)
+colors:
+  # Default colors
   primary:
-    #  background: '#161821'
-    #  foreground: '#d2d4de'
+    background: '0x171e1f'
+    foreground: '0xc7c7a5'
 
-    #  Custom primary
-    background: "#241E20"
-    foreground: "#f4e9b2"
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x171e1f'
+    cursor: '0xc7c7a5'
 
   # Normal colors
   normal:
-    black: "#161821"
-    red: "#e27878"
-    green: "#b4be82"
-    yellow: "#e2a478"
-    blue: "#84a0c6"
-    magenta: "#a093c7"
-    cyan: "#89b8c2"
-    white: "#c6c8d1"
+    black:   '0x171e1f'
+    red:     '0xff4658'
+    green:   '0x499180'
+    yellow:  '0xfdb11f'
+    blue:    '0x498091'
+    magenta: '0x9bc0c8'
+    cyan:    '0x66d9ef'
+    white:   '0xc7c7a5'
 
   # Bright colors
   bright:
-    black: "#6b7089"
-    red: "#e98989"
-    green: "#c0ca8e"
-    yellow: "#e9b189"
-    blue: "#91acd1"
-    magenta: "#ada0d3"
-    cyan: "#95c4ce"
-    white: "#d2d4de"
+    black:   '0x555e5f'
+    red:     '0xff4658'
+    green:   '0x499180'
+    yellow:  '0xfdb11f'
+    blue:    '0x498091'
+    magenta: '0x9bc0c8'
+    cyan:    '0x66d9ef'
+    white:   '0xe1eaef'
 
+  indexed_colors:
+    - { index: 16, color: '0xe6db74' }
+    - { index: 17, color: '0xd27b53' }
+    - { index: 18, color: '0x252c2d' }
+    - { index: 19, color: '0x373c3d' }
+    - { index: 20, color: '0x818f80' }
+    - { index: 21, color: '0xe3e3c8' }
   # End flavours
 # Visual Bell
 # Values for `animation`:

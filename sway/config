@@ -161,6 +161,10 @@ input type:touchpad {
   tap enabled
 }
 
+input type:pointer {
+  accel_profile "flat"
+}
+
 mode passthrough {
 	bindsym $mod+p mode default
 }
@@ -172,6 +176,9 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Alt+Right workspace next_on_output
 bindsym $mod+Alt+Left workspace prev_on_output
 
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you re ally want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $mod+Shift+R exec swaymsg reload
 
 #window styling
 default_border none
@@ -217,6 +224,15 @@ for_window [title="Preferences$"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 
 
+for_window [title="Figure 1"] floating enable
+# For pop up notification windows that don't use notifications api
+for_window [app_id="zoom" title="^zoom$"] border none, floating enable
+# For specific Zoom windows
+for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
+for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 960 x 700
+# Open Zoom Meeting windows on a new workspace (a bit hacky)
+#for_window [app_id="zoom" title="Zoom Meeting(.*)?"] workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle open
+
 # i3-gaps
 default_border pixel 1
 
@@ -226,19 +242,46 @@ smart_gaps on
 smart_borders on
 #hide_edge_borders both
 
+### Appearance ###
+# Start flavours
+## Base16 darkmoss
+# Author: Gabriel Avanzi (https://github.com/avanzzzi)
+
+set $base00 #171e1f
+set $base01 #252c2d
+set $base02 #373c3d
+set $base03 #555e5f
+set $base04 #818f80
+set $base05 #c7c7a5
+set $base06 #e3e3c8
+set $base07 #e1eaef
+set $base08 #ff4658
+set $base09 #e6db74
+set $base0A #fdb11f
+set $base0B #499180
+set $base0C #66d9ef
+set $base0D #498091
+set $base0E #9bc0c8
+set $base0F #d27b53
+# End flavours
+
 
 # colors
 # class                 border          backgr.     text        indicator child_border
-client.focused          #FFFFFF00       #111111     #ffffff     #2e9ef4   #FFFFFF66
-client.focused_inactive #FFFFFF00       #111111     #ffffffaa   #484e50   #FFFFFF66
-client.unfocused        #FFFFFF00       #111111     #ffffff44   #292d2e   #FFFFFF66
-client.urgent           #2f343a         #900000     #eeeeee     #900000   #900000
-client.placeholder      #000000         #0c0c0c     #eeeeee     #000000   #0c0c0c
+client.focused           $base00 $base00 $base05 $base00 #00000000
+client.unfocused         $base00 $base00 $base02 $base00 #00000000
+client.focused_inactive  $base00 $base00 $base04 $base00 #00000000
+client.urgent            $base00 $base00 $base04 $base00 #00000000
+# client.focused          #FFFFFF00       #111111     #ffffff     #2e9ef4   #FFFFFF66
+# client.focused_inactive #FFFFFF00       #111111     #ffffffaa   #484e50   #FFFFFF66
+# client.unfocused        #FFFFFF00       #111111     #ffffff44   #292d2e   #FFFFFF66
+# client.urgent           #2f343a         #900000     #eeeeee     #900000   #900000
+# client.placeholder      #000000         #0c0c0c     #eeeeee     #000000   #0c0c0c
 
 client.background       #ffffff
 
 
-output "*" bg /home/kalior/media/close-up-photo-ofg-light-bulb-716398-corrupted.png fit #241E20
+output "*" bg /home/kalior/media/close-up-photo-ofg-light-bulb-716398-corrupted-bw.png fit #222222
 
 output eDP-1 pos 2560 0
 output DP-1 pos 0 0

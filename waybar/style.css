@@ -10,8 +10,8 @@
 }
 
 window#waybar {
-  background: transparent; /*rgb(17, 17, 17);*/
-  color: #f4e9b2;
+  background: @base00;
+  color: @base05;
 }
 
 #window {
@@ -22,28 +22,38 @@ window#waybar {
 #workspaces button {
   padding: 0 5px;
   background: transparent;
-  color: #f4e9b2;
+  color: @base05;
   border: 2px solid transparent;
 }
 
 #workspaces button.focused {
-  color: #b3b3b3;
+  color: @base05;
   border-bottom: 2px solid #b3b3b3;
 }
 
 #workspaces button.urgent {
-  color: #ea6f84;
-  border-bottom: 2px solid #ea6f84;
+  color: @base08;
+  border-bottom: 2px solid @base08;
 }
 
 #workspaces button:hover {
-  /* border-top-color: black;
-  border-bottom: 2px solid #fff; */
+  /*border-top-color: black;
+  border-bottom: 2px solid #fff;*/
 }
 
 #mode {
   background: #64727d;
   border-bottom: 3px solid white;
+}
+
+button {
+  background: @base00;
+  color: @base05;
+}
+
+button:hover {
+  background: @base00;
+  color: @base05;
 }
 
 #clock,
@@ -75,7 +85,7 @@ window#waybar {
 }
 
 #battery icon {
-  color: #ea6f84;
+  color: @base08;
 }
 
 @keyframes blink {
@@ -86,7 +96,7 @@ window#waybar {
 }
 
 #battery.warning:not(.charging) {
-  color: #ea6f84;
+  color: @base08;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -95,11 +105,11 @@ window#waybar {
 }
 
 #network.disconnected {
-  color: #ea6f84;
+  color: @base08;
 }
 
 #memory.full {
-  color: #ea6f84;
+  color: @base08;
 }
 #memory.okay {
   color: #faf6df;
