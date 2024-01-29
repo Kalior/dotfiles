@@ -1,7 +1,7 @@
 #!/bin/bash
-if [[ $(playerctl status 2>/dev/null) = "Playing" ]]; then
-  title=$(exec playerctl metadata xesam:title)
-  artist=$(exec playerctl metadata xesam:albumArtist)
+if [[ $(playerctl -p spotify status 2>/dev/null) = "Playing" ]]; then
+  title=$(exec playerctl -p spotify metadata xesam:title)
+  artist=$(exec playerctl -p spotify metadata xesam:albumArtist)
   echo "$title - $artist"
 else
   echo ""
