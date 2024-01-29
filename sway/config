@@ -14,7 +14,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # launch programs
-bindsym $mod+d exec ~/.wofi
+bindsym $mod+d exec /home/kalior/.wofi
 
 
 # change focus
@@ -298,3 +298,5 @@ exec systemctl --user start graphical-session.target
 # nwg dock
 #exec_always nwg-dock -d
 #bindsym $mod+n exec nwg-dock
+
+include /etc/sway/config.d/*
